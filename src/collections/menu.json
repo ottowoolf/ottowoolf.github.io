@@ -1,18 +1,18 @@
 [
 	{
 		"name": "Home",
-		"url": "/"
+		"url": "/OPortfolio/"
 	},
 	{
 		"name": "Work",
-		"url": "/posts"
+		"url": "/OPortfolio/posts"
 	},
 	{
 		"name": "AI Assistant",
-		"url": "/#intelligence"
+		"url": "/OPortfolio/#intelligence"
 	},
 	{
 		"name": "About",
-		"url": "/about"
+		"url": "/OPortfolio/about"
 	}
 ]
