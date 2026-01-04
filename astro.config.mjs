@@ -1,11 +1,9 @@
-import { defineConfig } from "astro/config";
-
+import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind()],
-	  // ... integrations
-  site: 'https://github.com/ottowoolf', // Your GitHub username URL
-  base: '/OPortfolio',                 // Your repository name
+  integrations: [tailwind(), react()],
+  site: 'https://ottowoolf.github.io',
+  base: '/OPortfolio', // This adds the prefix to all generated links
 });
