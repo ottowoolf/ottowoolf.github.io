@@ -2,37 +2,13 @@
 	{
 		"name": "ASHM Health",
 		"description": "Leading organisation In the HIV sector in Australia.",
-		"image": "/assets/images/projects/ashmLP.png",
+		"image": "/assets/images/projects/ashm-hero.png",
 		"url": "/ashm"
 	},
 	{
-		"name": "Beyond The C",
-		"description": "A website dedicatedc to Hepatitis C education and awareness.",
+		"name": "Beyond The C (Coming Soon)",
+		"description": "A website dedicated to Hepatitis C education and awareness.",
 		"image": "/assets/images/projects/btcLP.png",
-		"url": "https://www.beyondthec.com.au/"
-	},
-	{
-		"name": "HTML.ZONE",
-		"description": "Web Toolbox.",
-		"image": "/assets/images/projects/html.zone.png",
-		"url": "https://html.zone"
-	},
-	{
-		"name": "Sink",
-		"description": "A Simple / Speedy / Secure Link Shortener with Analytics.",
-		"image": "/assets/images/projects/sink.cool.png",
-		"url": "https://sink.cool"
-	},
-	{
-		"name": "BroadcastChannel",
-		"description": "Turn your Telegram Channel into a MicroBlog.",
-		"image": "/assets/images/projects/broadcast-channel.png",
-		"url": "https://github.com/ccbikai/BroadcastChannel"
-	},
-	{
-		"name": "L(O*62).ONG",
-		"description": "Make your URL looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooonger",
-		"image": "/assets/images/projects/long.png",
-		"url": "https://loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ong"
+		"url": ""
 	}
 ]

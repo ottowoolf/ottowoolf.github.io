@@ -1,34 +1,55 @@
 ---
+interface Props {
+  src: string; // Path to JSON (e.g. "/assets/anim.json")
+  loop?: boolean;
+  autoplay?: boolean;
+  class?: string;
+}
 
+const {
+  src,
+  loop = true,
+  autoplay = true,
+  class: className = "w-full h-full",
+} = Astro.props;
 ---
 
-<!-- Wrapped div in anchor tag, removed href from div -->
-<a href="/" class="block w-56 h-56" aria-label="Home">
-  <div
-    id="nav-logo-lottie"
-    class="w-full h-full cursor-pointer transition-filters duration-300 dark:invert"
-  >
-  </div>
-</a>
+<div
+  class:list={["lottie-player", className]}
+  data-src={src}
+  data-loop={loop.toString()}
+  data-autoplay={autoplay.toString()}
+>
+</div>
 
 <script>
   import lottie from "lottie-web";
-  // Ensure this path is correct based on your folder structure
-  import logoData from "../assets/Logo-Anim.json";
 
-  const container = document.getElementById("nav-logo-lottie");
+  const initLottie = () => {
+    const containers = document.querySelectorAll(".lottie-player");
 
-  if (container) {
-    const anim = lottie.loadAnimation({
-      container: container,
-      renderer: "svg",
-      loop: false,
-      autoplay: true,
-      animationData: logoData,
+    containers.forEach((container) => {
+      // Avoid re-initializing if already loaded
+      if (container.getAttribute("data-loaded") === "true") return;
+
+      lottie.loadAnimation({
+        container: container as HTMLElement,
+        renderer: "svg",
+        loop: container.getAttribute("data-loop") === "true",
+        autoplay: container.getAttribute("data-autoplay") === "true",
+        path: container.getAttribute("data-src") || "", // Load from URL
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid meet",
+        },
+      });
+
+      container.setAttribute("data-loaded", "true");
     });
+  };
 
-    container.addEventListener("mouseenter", () => {
-      anim.goToAndPlay(0);
-    });
-  }
+  // Run on load
+  initLottie();
+
+  // Re-run on Astro page swaps (if ViewTransitions are used)
+  document.addEventListener("astro:page-load", initLottie);
 </script>
