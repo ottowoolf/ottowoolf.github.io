@@ -2,6 +2,9 @@
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
+import ConstellationGrid from "../components/ConstellationGrid.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -34,10 +37,12 @@ const { title } = Astro.props;
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
   <body class="antialiased bg-white dark:bg-neutral-950">
-    <SquareLines />
+    <!-- <SquareLines /> -->
+    <ConstellationGrid />
     <Header />
     <slot />
     <Footer />
+    <ScrollToTop />
     <script src="../assets/js/main.js"></script>
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
   </body>

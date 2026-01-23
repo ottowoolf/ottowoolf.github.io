@@ -1,0 +1,41 @@
+---
+
+---
+
+<button
+  id="scroll-to-top"
+  aria-label="Back to Top"
+  class="fixed bottom-8 right-8 bg-white dark:bg-neutral-800 p-3 rounded-full shadow-lg border border-gray-200 dark:border-neutral-700 text-gray-600 dark:text-neutral-300 hover:shadow-xl hover:-translate-y-1 transition-all opacity-0 invisible z-50 duration-300"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="w-5 h-5"><path d="m18 15-6-6-6 6"></path></svg
+  >
+</button>
+
+<script>
+  const scrollBtn = document.getElementById("scroll-to-top");
+
+  function toggleScrollBtn() {
+    if (window.scrollY > 500) {
+      scrollBtn?.classList.remove("opacity-0", "invisible");
+    } else {
+      scrollBtn?.classList.add("opacity-0", "invisible");
+    }
+  }
+
+  if (scrollBtn) {
+    window.addEventListener("scroll", toggleScrollBtn);
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>

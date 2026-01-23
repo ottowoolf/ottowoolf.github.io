@@ -1,0 +1,121 @@
+---
+
+---
+
+<!-- Changed z-0 to -z-10 to push it behind all content -->
+<canvas
+  id="magnify-canvas"
+  class="fixed inset-0 -z-10 pointer-events-none opacity-60"></canvas>
+
+<script>
+  // Cast to HTMLCanvasElement for TypeScript
+  const canvas = document.getElementById("magnify-canvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) throw new Error("Could not get canvas context");
+
+    let width, height;
+    let particles = [];
+
+    // Configuration
+    const SPACING = 30; // Distance between dots
+    const MOUSE_RADIUS = 150; // Range of the magnification effect
+    const BASE_RADIUS = 1; // Normal dot size
+    const MAX_RADIUS = 4; // Magnified dot size
+
+    let mouse = { x: -1000, y: -1000 }; // Start off-screen
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles();
+    };
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    // Handle touch devices roughly
+    window.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    });
+
+    class Particle {
+      x: number;
+      y: number;
+      baseX: number;
+      baseY: number;
+
+      constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+      }
+
+      draw() {
+        if (!ctx) return;
+
+        // Calculate distance to mouse
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Magnification Logic
+        let size = BASE_RADIUS;
+        let opacity = 0.3; // Default low opacity
+
+        if (distance < MOUSE_RADIUS) {
+          // Calculate scale factor (0 to 1) based on distance
+          const force = (MOUSE_RADIUS - distance) / MOUSE_RADIUS;
+
+          // Scale up size
+          size = BASE_RADIUS + (MAX_RADIUS - BASE_RADIUS) * force;
+
+          // Increase opacity near mouse
+          opacity = 0.3 + 0.7 * force;
+        }
+
+        ctx.fillStyle = `rgba(156, 163, 175, ${opacity})`; // Tailwind gray-400
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      // Create a structured grid instead of random positions
+      const cols = Math.ceil(width / SPACING);
+      const rows = Math.ceil(height / SPACING);
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          particles.push(new Particle(i * SPACING, j * SPACING));
+        }
+      }
+    }
+
+    function animate() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    animate();
+  }
+</script>
