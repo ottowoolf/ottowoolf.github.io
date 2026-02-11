@@ -6,9 +6,15 @@
 		"url": "/ashm"
 	},
 	{
-		"name": "Beyond The C (Coming Soon)",
+		"name": "Beyond The C",
 		"description": "A website dedicated to Hepatitis C education and awareness.",
-		"image": "/assets/images/projects/btcLP.png",
-		"url": ""
+		"image": "/assets/images/projects/BTC-Home.png",
+		"url": "/beyond-the-c"
+	},
+	{
+		"name": "Coming Soon...",
+		"description": "Work in progress",
+		"image": "/assets/images/projects/coming-soon.png",
+		"url": "#"
 	}
 ]

@@ -1,0 +1,404 @@
+---
+import LottiePlayer from "../components/LottiePlayer.astro";
+import Layout from "../layouts/main.astro";
+
+const heroImage = "../assets/images/projects/BTC-Home.png"; // Dark placeholder
+const screenSlider = "/assets/btc-screens.json";
+const megaMenuAnim = "/assets/btc-scroll.json";
+const designsystem = "/assets/images/login-btc.png";
+const myashm = "/assets/images/mobile-scene.png";
+---
+
+<Layout
+  title="Beyond The C - Case Study"
+  description="A website dedicated to program for Hepatitis C Elimination."
+>
+  <div
+    class="w-full bg-white dark:bg-neutral-950 transition-colors duration-300"
+  >
+    <!-- 1. THE HOOK: Full Bleed Hero -->
+    <header
+      class="relative h-[85vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-slate-900"
+    >
+      <div class="absolute inset-0 bg-slate-900/50 z-10"></div>
+      <img
+        src={heroImage}
+        alt="Beyond The C Hero"
+        class="absolute inset-0 w-full h-full object-cover opacity-50 animate-slow-zoom"
+      />
+
+      <div class="relative z-20 text-center max-w-5xl px-6 mt-20">
+        <span
+          class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md"
+        >
+          Healthcare & UX Design Case Study
+        </span>
+        <h6
+          class="text-4xl md:text-4xl font-black text-white mb-6 tracking-tight leading-tight"
+        >
+          Designing the gateway to the program
+        </h6>
+        <p
+          class="text-1xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light"
+        >
+          A national initiative to identify and treat Australians living with
+          Hepatitis C who have disengaged from care.
+        </p>
+      </div>
+    </header>
+
+    <!-- 2. THE CONTEXT: Metadata Grid -->
+    <div
+      class="border-b border-gray-100 dark:border-neutral-800 bg-white dark:bg-neutral-950"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+            <h3
+              class="text-xs font-bold text-gray-400 dark:text-neutral-500 uppercase tracking-widest mb-2"
+            >
+              Role
+            </h3>
+            <p class="font-medium text-gray-900 dark:text-neutral-100">
+              UX Designer
+            </p>
+          </div>
+          <div>
+            <h3
+              class="text-xs font-bold text-gray-400 dark:text-neutral-500 uppercase tracking-widest mb-2"
+            >
+              Timeline
+            </h3>
+            <p class="font-medium text-gray-900 dark:text-neutral-100">
+              6 Weeks
+            </p>
+          </div>
+          <div>
+            <h3
+              class="text-xs font-bold text-gray-400 dark:text-neutral-500 uppercase tracking-widest mb-2"
+            >
+              Stack
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-2 py-1 bg-gray-100 dark:bg-neutral-800 rounded text-xs font-medium text-gray-600 dark:text-neutral-300"
+                >Figma</span
+              >
+
+              <span
+                class="px-2 py-1 bg-gray-100 dark:bg-neutral-800 rounded text-xs font-medium text-gray-600 dark:text-neutral-300"
+                >Elementor</span
+              >
+            </div>
+          </div>
+          <div class="flex items-center">
+            <a
+              href="https://www.beyondthec.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-xl font-bold hover:bg-black dark:hover:bg-neutral-200 transition-all text-sm group shadow-lg"
+            >
+              Visit Live Site
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                ><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. THE NARRATIVE -->
+    <div class="max-w-4xl mx-auto px-6 py-16 space-y-24">
+      <!-- Key Outcomes (Executive Summary) -->
+      <section
+        class="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-10 border border-blue-50 dark:border-blue-400 relative overflow-hidden"
+      >
+        <h4
+          class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-4 flex items-center gap-2"
+        >
+          Impact at a Glance
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 relative z-10">
+          <div>
+            <span
+              class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 tracking-tighter"
+              >+65%</span
+            >
+            <span
+              class="text-sm text-blue-900/100 dark:text-blue-200/70 font-medium leading-tight block"
+              >User Acquisition</span
+            >
+          </div>
+          <div>
+            <span
+              class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 tracking-tighter"
+              >+222%</span
+            >
+            <span
+              class="text-sm text-blue-900/100 dark:text-blue-200/70 font-medium leading-tight block"
+              >User Engagement</span
+            >
+          </div>
+
+          <div>
+            <span
+              class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 tracking-tighter"
+              >AA WCAG</span
+            >
+            <span
+              class="text-sm text-blue-900/100 dark:text-blue-200/70 font-medium leading-tight block"
+              >Accessibility Compliance</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- The Challenge -->
+      <section>
+        <h2
+          class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-neutral-100 mb-8"
+        >
+          The Challenge
+        </h2>
+        <p
+          class="text-l text-gray-600 dark:text-neutral-400 leading-relaxed mb-4"
+        >
+          The "Beyond the C" program offers significant financial incentives and
+          support for clinics, but the barriers to entry were high. The program
+          structure involves specific clinical audits, software requirements,
+          and strict deadlines.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm"
+          >
+            <div class="w-8 h-8 text-red-500 mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-8 h-8"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="18" x2="23" y1="8" y2="13"></line>
+                <line x1="23" x2="18" y1="8" y2="13"></line>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-neutral-100 mb-2">
+              Information Overload
+            </h3>
+            <p
+              class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed"
+            >
+              GPs couldn't quickly determine eligibility or the workload
+              involved.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm"
+          >
+            <div class="w-8 h-8 text-orange-500 mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-8 h-8"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                <path d="M12 18V6"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-neutral-100 mb-2">
+              Obscure Incentives
+            </h3>
+            <p
+              class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed"
+            >
+              Financial benefits and support grants were unclear or buried in
+              text.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm"
+          >
+            <div class="w-8 h-8 text-blue-500 mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-8 h-8"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+              </svg>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-neutral-100 mb-2">
+              Resource Fragmentation
+            </h3>
+            <p
+              class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed"
+            >
+              Critical forms, templates, and questionnaires were scattered or
+              hard to find.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visual Break: Mega Menu Animation -->
+      <section class="space-y-4">
+        <div
+          class="bg-gray-100 dark:bg-neutral-800 rounded-3xl overflow-hidden shadow-inner border border-gray-200 dark:border-neutral-700 relative min-h-[400px]"
+        >
+          <!-- Replaced Static Image with Lottie Component -->
+          <LottiePlayer src={screenSlider} />
+        </div>
+        <p class="text-sm text-gray-500 text-center italic">
+          The New Beyond the C Design
+        </p>
+      </section>
+
+      <!-- The Solution -->
+      <section>
+        <h2
+          class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-neutral-100 mb-8"
+        >
+          The Solution
+        </h2>
+
+        <!-- 1. Mega Menu -->
+        <div class="mb-16">
+          <h3
+            class="text-1xl font-bold text-gray-900 dark:text-neutral-200 mb-4"
+          >
+            1. Simplified Program Structure
+          </h3>
+          <p
+            class="prose prose-l text-gray-600 dark:text-neutral-400 mb-4 max-w-full"
+          >
+            Restructured information architecture to answer the "Big Three"
+            questions immediately: <strong
+              >Eligibility, What's Involved, and Incentives</strong
+            >.
+          </p>
+          <p
+            class="prose prose-l text-gray-600 dark:text-neutral-400 mb-8 max-w-full"
+          >
+            Clear call to action with enrollment status and deadlines. Visuals
+            describing the 4 pillars of the program, Enrollment Eligibility, and
+            an FAQ section to answer questions for more context.
+          </p>
+          <div
+            class="p-6 bg-gray-50 dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800"
+          >
+            <div class="min-h-[300px] flex items-center justify-center">
+              <!-- Mega Menu Animation goes here -->
+              <LottiePlayer src={megaMenuAnim} />
+            </div>
+            <p class="text-sm text-gray-500 italic mb-4 mt-4">
+              A structured list of everything a user needs to start, continue or
+              complete the program. The design is based on user feedback to
+              ensure it meets their needs and expectations.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. SSO login & Portal -->
+        <div class="mb-16">
+          <h3
+            class="text-1xl font-bold text-gray-900 dark:text-neutral-200 mb-4"
+          >
+            2. SSO login & Portal
+          </h3>
+          <p
+            class="prose prose-l text-gray-600 dark:text-neutral-400 mb-8 max-w-full"
+          >
+            We built a secure, gated <strong>Member Area</strong>. Upon login,
+            practices gain instant access to the complete operational "toolkit":
+            clinical audit forms, patient questionnaires, and communication
+            templates. This centralizes all documentation in one easy-to-find
+            location.
+          </p>
+          <img
+            src={designsystem}
+            alt="Design System Image"
+            class="max-w-full"
+          />
+        </div>
+
+        <!-- 3. Mobile Journey -->
+        <div>
+          <h3
+            class="text-1xl font-bold text-gray-900 dark:text-neutral-200 mb-4"
+          >
+            3. A responsive experience for on-the-go users
+          </h3>
+          <p
+            class="prose prose-l text-gray-600 dark:text-neutral-400 mb-8 max-w-full"
+          >
+            Recognizing that many users access the site from mobile devices, we
+            optimized the design for smaller screens. The mobile experience
+            retains all core functionalities while ensuring quick access to
+            critical information and resources.
+          </p>
+          <img
+            src={myashm}
+            alt="Integrated User Portal"
+            class="max-w-full rounded-2xl border border-gray-100 dark:border-neutral-800"
+          />
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes slow-zoom {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s linear infinite alternate;
+  }
+</style>
