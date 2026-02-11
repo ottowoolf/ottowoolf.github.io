@@ -4,6 +4,7 @@ interface Props {
   loop?: boolean;
   autoplay?: boolean;
   class?: string;
+  href?: string; // Optional: Add URL prop
 }
 
 const {
@@ -11,16 +12,29 @@ const {
   loop = true,
   autoplay = true,
   class: className = "w-full h-full",
+  href,
 } = Astro.props;
 ---
 
-<div
-  class:list={["lottie-player", className]}
-  data-src={src}
-  data-loop={loop.toString()}
-  data-autoplay={autoplay.toString()}
->
-</div>
+<!-- Conditional Rendering: If 'href' exists, render link wrapper -->{
+  href ? (
+    <a href={href} class:list={["block", className]}>
+      <div
+        class="lottie-player w-full h-full"
+        data-src={src}
+        data-loop={loop.toString()}
+        data-autoplay={autoplay.toString()}
+      />
+    </a>
+  ) : (
+    <div
+      class:list={["lottie-player", className]}
+      data-src={src}
+      data-loop={loop.toString()}
+      data-autoplay={autoplay.toString()}
+    />
+  )
+}
 
 <script>
   import lottie from "lottie-web";
@@ -29,7 +43,6 @@ const {
     const containers = document.querySelectorAll(".lottie-player");
 
     containers.forEach((container) => {
-      // Avoid re-initializing if already loaded
       if (container.getAttribute("data-loaded") === "true") return;
 
       lottie.loadAnimation({
@@ -37,7 +50,7 @@ const {
         renderer: "svg",
         loop: container.getAttribute("data-loop") === "true",
         autoplay: container.getAttribute("data-autoplay") === "true",
-        path: container.getAttribute("data-src") || "", // Load from URL
+        path: container.getAttribute("data-src") || "",
         rendererSettings: {
           preserveAspectRatio: "xMidYMid meet",
         },
@@ -47,9 +60,6 @@ const {
     });
   };
 
-  // Run on load
   initLottie();
-
-  // Re-run on Astro page swaps (if ViewTransitions are used)
   document.addEventListener("astro:page-load", initLottie);
 </script>
