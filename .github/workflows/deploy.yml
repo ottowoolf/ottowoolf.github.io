@@ -20,7 +20,8 @@ jobs:
         uses: withastro/action@v2
         env:
           # Bake the key into the build
-          PUBLIC_GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }} 
+          PUBLIC_GEMINI_API_KEY: ${{ secrets.PUBLIC_GEMINI_API_KEY }}
+          PUBLIC_AI_CONTEXT: ${{ secrets.PUBLIC_AI_CONTEXT }}
 
   deploy:
     needs: build
