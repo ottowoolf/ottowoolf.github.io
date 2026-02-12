@@ -92,7 +92,7 @@
 
 <script>
   import { marked } from "marked";
-  const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY; // Requires .env setup
+  const apiKey = import.meta.env.PUBLIC_GEMINI_API_KEY;
   const context = import.meta.env.PUBLIC_AI_CONTEXT.replace(/\\n/g, "\n");
 
   const historyDiv = document.getElementById("chat-history");
@@ -121,7 +121,7 @@
             contents: [{ parts: [{ text: text }] }],
             systemInstruction: { parts: [{ text: context }] },
           }),
-        }
+        },
       );
       const data = await response.json();
       const reply = data.candidates[0].content.parts[0].text;
