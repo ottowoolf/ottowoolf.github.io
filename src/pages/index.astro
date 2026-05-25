@@ -70,6 +70,7 @@
       let progress = 0;
       let introDone = false;
       let hoverSide = null;
+      let transitionTarget = "product";
 
       // Transition variables
       let transitionPhase = "none"; // 'none', 'delay', 'slide', 'fadeOut'
@@ -133,6 +134,7 @@
         if (introDone && hoverSide && transitionPhase === "none") {
           if (hoverSide === "right") {
             // Start the product transition with a delay
+            transitionTarget = "product";
             transitionPhase = "delay";
             msgEl.innerText = "Redirecting to Product Design...";
             msgEl.style.opacity = "1";
@@ -142,10 +144,16 @@
               transitionStart = performance.now();
             }, 400); // 400ms delay before sliding
           } else {
-            // Game side is coming soon
-            msgEl.innerText = "Game Design Portfolio is Coming Soon!";
+            // Start the game transition with a mirrored delay
+            transitionTarget = "game";
+            transitionPhase = "delay";
+            msgEl.innerText = "Redirecting to Game Design...";
             msgEl.style.opacity = "1";
-            setTimeout(() => (msgEl.style.opacity = "0"), 2000);
+
+            setTimeout(() => {
+              transitionPhase = "slide";
+              transitionStart = performance.now();
+            }, 400); // 400ms delay before sliding
           }
         }
       });
@@ -225,15 +233,30 @@
         // Handle Exit Transition Positions
         if (transitionPhase === "slide") {
           const t = easeInCubic(transitionProgress);
-          topX -= width * 1.5 * t;
-          bottomX -= width * 1.5 * t;
-          leftTextX -= width * 1.5 * t;
-          rightTextX = width * 0.75 - width * 0.25 * t; // Move to center
+          const slideDelta = width * 1.5 * t;
+          if (transitionTarget === "product") {
+            topX -= slideDelta;
+            bottomX -= slideDelta;
+            leftTextX -= slideDelta;
+            rightTextX = width * 0.75 - width * 0.25 * t; // Move to center
+          } else {
+            topX += slideDelta;
+            bottomX += slideDelta;
+            leftTextX = width * 0.25 + width * 0.25 * t; // Move to center
+            rightTextX += slideDelta;
+          }
         } else if (transitionPhase === "fadeOut") {
-          topX = -width;
-          bottomX = -width;
-          leftTextX = -width;
-          rightTextX = width * 0.5; // Locked in center
+          if (transitionTarget === "product") {
+            topX = -width;
+            bottomX = -width;
+            leftTextX = -width;
+            rightTextX = width * 0.5; // Locked in center
+          } else {
+            topX = width * 2;
+            bottomX = width * 2;
+            leftTextX = width * 0.5; // Locked in center
+            rightTextX = width * 2;
+          }
         }
 
         // --- GLOBAL ZOOM (used for transition zoom) ---
@@ -460,7 +483,8 @@
           const t = Math.min(1, (now - transitionStart) / fadeDuration);
           transitionProgress = t;
           if (t >= 1) {
-            window.location.href = "/product";
+            window.location.href =
+              transitionTarget === "product" ? "/product" : "/game";
             return;
           }
         } else if (progress < 1) {
