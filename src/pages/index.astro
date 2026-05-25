@@ -114,7 +114,8 @@
             const dataUrl = `url("data:image/svg+xml;utf8,${encodeURIComponent(emojiSvg)}") 32 32, auto`;
             canvasEl.style.cursor = dataUrl;
           } else {
-            canvasEl.style.cursor = 'default';
+            // Keep pointer cursor to indicate interactivity on the product side
+            canvasEl.style.cursor = 'pointer';
           }
         }
       });
