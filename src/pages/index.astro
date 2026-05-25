@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dual Portfolio Concept</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@400;600;700;800&family=Figtree:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -277,7 +277,9 @@
           drawingContext.save();
           drawingContext.clip();
           const active = hoverSide === "left";
-          drawingContext.fillStyle = active ? "rgba(0,0,0,0.16)" : "rgba(0,0,0,0.06)";
+          drawingContext.fillStyle = active
+            ? "rgba(0,0,0,0.16)"
+            : "rgba(0,0,0,0.06)";
           const step = active ? 18 : 28;
           const cx = leftTextX;
           const cy = height * 0.5;
@@ -397,10 +399,10 @@
         if (isNarrow) {
           const basePxR = Math.floor(Math.min(width, height) * 0.11);
           const mainPxR = Math.max(12, Math.min(44, basePxR - 12));
-          drawingContext.font = `900 ${mainPxR}px Arial`;
+          drawingContext.font = `900 ${mainPxR}px Figtree`;
           drawingContext.fillText("PRODUCT", 0, 0);
         } else {
-          drawingContext.font = "900 4vw Arial";
+          drawingContext.font = "900 4vw Figtree";
           drawingContext.fillText("PRODUCT", 0, -30);
           drawingContext.fillText("DESIGN", 0, 30);
         }
