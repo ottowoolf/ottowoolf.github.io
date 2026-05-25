@@ -1,19 +1,392 @@
----
-import AiAssistant from "../components/AiAssistant.astro";
-import Button from "../components/button.astro";
-import HeroLottie from "../components/HeroLottie.astro";
-import Projects from "../components/home/projects.astro";
-import Separator from "../components/home/separator.astro";
-import Layout from "../layouts/main.astro";
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual Portfolio Concept</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #111;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      #message {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="portfolioCanvas"></canvas>
+    <div id="message">Click a side to enter...</div>
 
-<Layout title="Otto">
-  <HeroLottie />
-  <Separator text="Selected Projects" />
-  <Projects />
-  <Separator id="intelligence" text="Portfolio AI Assistant" />
-  <AiAssistant />
+    <script is:inline>
+      /** @type {HTMLCanvasElement | null} */
+      const canvas = document.getElementById("portfolioCanvas");
+      /** @type {HTMLDivElement | null} */
+      const msg = document.getElementById("message");
 
-  <!-- <Separator text="Some of my writing" /> -->
-  <!-- <Writings /> -->
-</Layout>
+      if (!canvas || !msg) {
+        throw new Error("Portfolio canvas or message element was not found.");
+      }
+
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) {
+        throw new Error("2D canvas context is not available.");
+      }
+
+      const canvasEl = canvas;
+      const msgEl = msg;
+      const drawingContext = ctx;
+
+      let width = 0;
+      let height = 0;
+      let progress = 0;
+      let introDone = false;
+      let hoverSide = null;
+
+      // Transition variables
+      let transitionPhase = "none"; // 'none', 'delay', 'slide', 'fadeOut'
+      let transitionProgress = 0;
+      let transitionStart = 0;
+      const slideDuration = 800; // ms
+      const fadeDuration = 700; // ms (slide + fade = 1500ms)
+
+      // Easing functions
+      const easeOutExpo = (x) => (x === 1 ? 1 : 1 - Math.pow(2, -10 * x));
+      const easeInCubic = (x) => x * x * x;
+
+      function resize() {
+        width = canvasEl.width = window.innerWidth;
+        height = canvasEl.height = window.innerHeight;
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      // Track Mouse
+      let mouse = { x: -1000, y: -1000 };
+      window.addEventListener("mousemove", (e) => {
+        if (transitionPhase !== "none") return; // Lock hover state during transition
+
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+
+        // Calculate split boundary at current Y
+        const topX = width * 0.6;
+        const bottomX = width * 0.4;
+        const splitX = topX - (topX - bottomX) * (mouse.y / height);
+
+        const prev = hoverSide;
+        if (mouse.x < splitX) {
+          hoverSide = "left";
+        } else {
+          hoverSide = "right";
+        }
+
+        // Update cursor only when hoverSide changes
+        if (hoverSide !== prev) {
+          if (hoverSide === "left") {
+            // Use an inline data-URL SVG rendering of the 🎮 emoji for a crisp cursor
+            const emojiSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='48'>🎮</text></svg>`;
+            const dataUrl = `url("data:image/svg+xml;utf8,${encodeURIComponent(emojiSvg)}") 32 32, auto`;
+            canvasEl.style.cursor = dataUrl;
+          } else {
+            canvasEl.style.cursor = 'default';
+          }
+        }
+      });
+
+      // Reset cursor when leaving the canvas
+      canvasEl.addEventListener('mouseleave', () => {
+        canvasEl.style.cursor = 'default';
+      });
+
+      window.addEventListener("click", () => {
+        if (introDone && hoverSide && transitionPhase === "none") {
+          if (hoverSide === "right") {
+            // Start the product transition with a delay
+            transitionPhase = "delay";
+            msgEl.innerText = "Redirecting to Product Design...";
+            msgEl.style.opacity = "1";
+
+            setTimeout(() => {
+              transitionPhase = "slide";
+              transitionStart = performance.now();
+            }, 400); // 400ms delay before sliding
+          } else {
+            // Game side is coming soon
+            msgEl.innerText = "Game Design Portfolio is Coming Soon!";
+            msgEl.style.opacity = "1";
+            setTimeout(() => (msgEl.style.opacity = "0"), 2000);
+          }
+        }
+      });
+
+      // Draw Manga Speed Lines
+      /**
+       * @param {CanvasRenderingContext2D} ctx
+       * @param {number} x
+       * @param {number} y
+       * @param {number} radius
+       * @param {string} color
+       */
+      function drawSpeedLines(ctx, x, y, radius, color) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 40; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const length = radius + Math.random() * 200;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+          ctx.lineTo(Math.cos(angle) * length, Math.sin(angle) * length);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        const easedProgress = easeOutExpo(progress);
+
+        // Base X coordinates and text positions
+        let topX = width * 0.6;
+        let bottomX = width * 0.4;
+        let leftTextX = width * 0.25;
+        let rightTextX = width * 0.75;
+
+        // Handle Exit Transition Positions
+        if (transitionPhase === "slide") {
+          const t = easeInCubic(transitionProgress);
+          topX -= width * 1.5 * t;
+          bottomX -= width * 1.5 * t;
+          leftTextX -= width * 1.5 * t;
+          rightTextX = width * 0.75 - width * 0.25 * t; // Move to center
+        } else if (transitionPhase === "fadeOut") {
+          topX = -width;
+          bottomX = -width;
+          leftTextX = -width;
+          rightTextX = width * 0.5; // Locked in center
+        }
+
+        // --- GLOBAL ZOOM (used for transition zoom) ---
+        ctx.save();
+
+        // If we're in the fade-out phase, apply a gentle zoom centered on the viewport
+        if (transitionPhase === "fadeOut") {
+          const cx = width * 0.5;
+          const cy = height * 0.5;
+          const scale = 1 + easeOutExpo(transitionProgress) * 0.35; // up to ~1.35x
+          ctx.translate(cx, cy);
+          ctx.scale(scale, scale);
+          ctx.translate(-cx, -cy);
+        }
+        // Diagonal Slide offsets (Intro)
+        const animInv = 1 - easedProgress;
+        const leftOffsetX = -width * 0.5 * animInv;
+        const leftOffsetY = height * 0.5 * animInv; // Starts bottom-left, moves up
+
+        const rightOffsetX = width * 0.5 * animInv;
+        const rightOffsetY = -height * 0.5 * animInv; // Starts top-right, moves down
+
+        // --- DRAW LEFT SIDE (GAME DESIGN) ---
+        drawingContext.save();
+        drawingContext.translate(leftOffsetX, leftOffsetY);
+
+        drawingContext.beginPath();
+        drawingContext.moveTo(0, 0);
+        drawingContext.lineTo(topX, 0);
+        drawingContext.lineTo(bottomX, height);
+        drawingContext.lineTo(0, height);
+        drawingContext.closePath();
+
+        // Fill
+        drawingContext.fillStyle = hoverSide === "left" ? "#ff2a5f" : "#cc113f";
+        drawingContext.fill();
+
+        // Manga Dots pattern (simulated)
+        if (hoverSide === "left") {
+          drawingContext.fillStyle = "rgba(0, 0, 0, 0.1)";
+          for (let i = 0; i < width; i += 20) {
+            for (let j = 0; j < height; j += 20) {
+              drawingContext.beginPath();
+              drawingContext.arc(i, j, 2, 0, Math.PI * 2);
+              drawingContext.fill();
+            }
+          }
+        }
+
+        // Text
+        drawingContext.fillStyle = "white";
+        drawingContext.font = "900 italic 4vw Arial";
+        drawingContext.textAlign = "center";
+        drawingContext.textBaseline = "middle";
+        drawingContext.save();
+        drawingContext.translate(leftTextX, height * 0.5);
+        drawingContext.rotate(-0.1);
+        drawingContext.fillText("GAME", 0, -35);
+        drawingContext.fillText("DESIGN", 0, 20);
+
+        // Coming Soon
+        drawingContext.font = "800 italic 1.5vw Arial";
+        drawingContext.fillStyle = "#ffeb3b";
+        drawingContext.fillText("- COMING SOON -", 0, 65);
+
+        drawingContext.restore();
+
+        // Speed lines during intro
+        if (!introDone)
+          drawSpeedLines(
+            drawingContext,
+            0,
+            height / 2,
+            100,
+            "rgba(255,255,255,0.3)",
+          );
+
+        drawingContext.restore();
+
+        // --- DRAW RIGHT SIDE (ENTERPRISE) ---
+        drawingContext.save();
+        drawingContext.translate(rightOffsetX, rightOffsetY);
+
+        drawingContext.beginPath();
+        drawingContext.moveTo(topX, 0);
+        drawingContext.lineTo(width, 0);
+        drawingContext.lineTo(width, height);
+        drawingContext.lineTo(bottomX, height);
+        drawingContext.closePath();
+
+        // Fill
+        drawingContext.fillStyle =
+          hoverSide === "right" ? "#0077ff" : "#0055b3";
+        drawingContext.fill();
+
+        // Grid pattern (Enterprise feel)
+        if (hoverSide === "right") {
+          drawingContext.strokeStyle = "rgba(255, 255, 255, 0.1)";
+          drawingContext.lineWidth = 1;
+          for (let i = 0; i < width; i += 40) {
+            drawingContext.beginPath();
+            drawingContext.moveTo(i, 0);
+            drawingContext.lineTo(i, height);
+            drawingContext.stroke();
+          }
+          for (let i = 0; i < height; i += 40) {
+            drawingContext.beginPath();
+            drawingContext.moveTo(0, i);
+            drawingContext.lineTo(width, i);
+            drawingContext.stroke();
+          }
+        }
+
+        // Text
+        drawingContext.fillStyle = "white";
+        drawingContext.font = "900 4vw Arial";
+        drawingContext.textAlign = "center";
+        drawingContext.textBaseline = "middle";
+        drawingContext.save();
+
+        drawingContext.translate(rightTextX, height * 0.5);
+        drawingContext.fillText("PRODUCT", 0, -30);
+        drawingContext.fillText("DESIGN", 0, 30);
+        drawingContext.restore();
+
+        // Speed lines during intro
+        if (!introDone)
+          drawSpeedLines(
+            drawingContext,
+            width,
+            height / 2,
+            100,
+            "rgba(255,255,255,0.3)",
+          );
+
+        drawingContext.restore();
+
+        // --- DRAW CENTER SPLIT LINE ---
+        if (introDone) {
+          drawingContext.beginPath();
+          drawingContext.moveTo(topX, 0);
+          drawingContext.lineTo(bottomX, height);
+          drawingContext.strokeStyle = "#fff";
+          drawingContext.lineWidth = 10;
+          drawingContext.stroke();
+
+          // Black manga-style border next to white line
+          drawingContext.beginPath();
+          drawingContext.moveTo(topX - 6, 0);
+          drawingContext.lineTo(bottomX - 6, height);
+          drawingContext.strokeStyle = "#000";
+          drawingContext.lineWidth = 4;
+          drawingContext.stroke();
+        }
+
+        drawingContext.restore(); // Restore from global zoom
+
+        // --- FADE TO WHITE ---
+        if (transitionPhase === "fadeOut") {
+          drawingContext.fillStyle = `rgba(255, 255, 255, ${transitionProgress})`;
+          drawingContext.fillRect(0, 0, width, height);
+        }
+
+        // Animation logic (time-based for consistent durations)
+        const now = performance.now();
+        if (transitionPhase === "slide") {
+          const t = Math.min(1, (now - transitionStart) / slideDuration);
+          transitionProgress = t;
+          if (t >= 1) {
+            transitionPhase = "fadeOut";
+            transitionStart = now;
+            transitionProgress = 0;
+          }
+        } else if (transitionPhase === "fadeOut") {
+          const t = Math.min(1, (now - transitionStart) / fadeDuration);
+          transitionProgress = t;
+          if (t >= 1) {
+            window.location.href = "/product";
+            return;
+          }
+        } else if (progress < 1) {
+          progress += 0.009; // Intro animation slower
+        } else if (!introDone) {
+          introDone = true;
+          msgEl.style.opacity = "1";
+          setTimeout(() => (msgEl.style.opacity = "0"), 2000);
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      // Start
+      setTimeout(() => {
+        draw();
+      }, 300);
+    </script>
+  </body>
+</html>

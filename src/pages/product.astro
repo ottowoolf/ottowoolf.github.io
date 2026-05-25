@@ -1,0 +1,56 @@
+---
+import AiAssistant from "../components/AiAssistant.astro";
+import Button from "../components/button.astro";
+import HeroLottie from "../components/HeroLottie.astro";
+import Projects from "../components/home/projects.astro";
+import Separator from "../components/home/separator.astro";
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="Otto">
+  <div
+    id="pageFadeOverlay"
+    class="fixed inset-0 z-[999] pointer-events-none bg-white"
+    style="opacity:1"
+  >
+  </div>
+  <HeroLottie />
+  <Separator text="Selected Projects" />
+  <Projects />
+  <Separator id="intelligence" text="Portfolio AI Assistant" />
+  <AiAssistant />
+
+  <!-- <Separator text="Some of my writing" /> -->
+  <!-- <Writings /> -->
+</Layout>
+
+<style>
+  #pageFadeOverlay {
+    transition: opacity 420ms ease-out;
+  }
+</style>
+
+<script is:inline>
+  const overlay = document.getElementById("pageFadeOverlay");
+
+  if (overlay) {
+    // Show the white overlay briefly, then fade to reveal the page
+    // Small delay before starting the fade so the white holds for a moment
+    const holdMs = 300; // how long the white stays before fading
+    const removeAfter = 700; // cleanup after fade
+
+    overlay.style.opacity = "1";
+
+    // Start fade after a short hold
+    setTimeout(() => {
+      overlay.style.opacity = "0";
+    }, holdMs);
+
+    // Clean up any transition handshake and remove session flag
+    setTimeout(() => {
+      try {
+        sessionStorage.removeItem("portfolioTransition");
+      } catch (e) {}
+    }, removeAfter);
+  }
+</script>
