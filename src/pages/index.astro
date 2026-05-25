@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dual Portfolio Concept</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body,
       html {
@@ -170,6 +174,42 @@
         ctx.restore();
       }
 
+      // Draw text with extra spacing between words (in pixels)
+      /**
+       * @param {CanvasRenderingContext2D} ctx
+       * @param {string} text
+       * @param {number} x
+       * @param {number} y
+       * @param {number} extraWordSpacing
+       */
+      function drawTextWithWordSpacing(ctx, text, x, y, extraWordSpacing) {
+        const words = text.split(" ");
+        const spaceWidth = ctx.measureText(" ").width;
+        const wordWidths = words.map((w) => ctx.measureText(w).width);
+        const totalWidth =
+          wordWidths.reduce((a, b) => a + b, 0) +
+          (words.length - 1) * (spaceWidth + extraWordSpacing);
+
+        const prevAlign = ctx.textAlign;
+        // compute starting x based on alignment
+        let startX = x;
+        if (prevAlign === "center") startX = x - totalWidth / 2;
+        else if (prevAlign === "right") startX = x - totalWidth;
+
+        ctx.textAlign = "left";
+        let cursor = startX;
+        for (let i = 0; i < words.length; i++) {
+          ctx.fillText(words[i], cursor, y);
+          cursor += wordWidths[i] + spaceWidth + extraWordSpacing;
+        }
+        ctx.textAlign = prevAlign;
+      }
+
+      // Deterministic pseudo-random based on position — keeps halftone static
+      function randFromPos(x, y) {
+        return Math.abs(Math.sin(x * 12.9898 + y * 78.233) * 43758.5453) % 1;
+      }
+
       function draw() {
         ctx.clearRect(0, 0, width, height);
 
@@ -230,17 +270,35 @@
         // Fill
         drawingContext.fillStyle = hoverSide === "left" ? "#ff2a5f" : "#cc113f";
         drawingContext.fill();
+        drawingContext.letterSpacing = "6px";
 
-        // Manga Dots pattern (simulated)
-        if (hoverSide === "left") {
-          drawingContext.fillStyle = "rgba(0, 0, 0, 0.1)";
-          for (let i = 0; i < width; i += 20) {
-            for (let j = 0; j < height; j += 20) {
+        // Halftone overlay (comic-style) clipped to the left polygon
+        if (true) {
+          drawingContext.save();
+          drawingContext.clip();
+          const active = hoverSide === "left";
+          drawingContext.fillStyle = active ? "rgba(0,0,0,0.16)" : "rgba(0,0,0,0.06)";
+          const step = active ? 18 : 28;
+          const cx = leftTextX;
+          const cy = height * 0.5;
+          for (let y = -step; y < height + step; y += step) {
+            for (let x = -step; x < width + step; x += step) {
+              const dx = x - cx;
+              const dy = y - cy;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              // dot size increases towards center
+              const maxDist = Math.max(width, height);
+              const t = Math.max(0, 1 - dist / maxDist);
+              // slightly smaller maximum radii for a tighter halftone
+              const base = active ? 5 : 2.5;
+              const noise = randFromPos(x, y);
+              const r = Math.max(0.5, base * t * (0.5 + noise * 0.6));
               drawingContext.beginPath();
-              drawingContext.arc(i, j, 2, 0, Math.PI * 2);
+              drawingContext.arc(x, y, r, 0, Math.PI * 2);
               drawingContext.fill();
             }
           }
+          drawingContext.restore();
         }
 
         // Text (desktop vs narrow/mobile)
@@ -250,24 +308,37 @@
         drawingContext.save();
         drawingContext.translate(leftTextX, height * 0.5);
         drawingContext.rotate(-0.1);
+
+        // Subtle shadow that blends with the page background (#111)
+        drawingContext.shadowColor = "rgba(17,17,17,0.75)";
+        drawingContext.shadowBlur = 6;
+        drawingContext.shadowOffsetX = 2;
+        drawingContext.shadowOffsetY = 2;
         if (isNarrow) {
           const basePx = Math.floor(Math.min(width, height) * 0.11);
           const mainPx = Math.max(12, Math.min(44, basePx - 12));
-          drawingContext.font = `900 italic ${mainPx}px Arial`;
+          drawingContext.font = `900 italic ${mainPx}px Bangers`;
           const halfGap = 2; // total gap = 4px (2px above, 2px below)
           drawingContext.fillText("GAME", 0, 0); // single-line title on narrow
 
-          drawingContext.font = `800 italic ${Math.max(12, Math.floor(mainPx * 0.35))}px Arial`;
+          drawingContext.font = `800 italic ${Math.max(12, Math.floor(mainPx * 0.35))}px Bangers`;
           drawingContext.fillStyle = "#ffeb3b";
-          drawingContext.fillText("- COMING SOON -", 0, Math.floor(mainPx / 2) + 28);
+          drawingContext.letterSpacing = "6px";
+          drawTextWithWordSpacing(
+            drawingContext,
+            "- COMING SOON -",
+            0,
+            Math.floor(mainPx / 2) + 28,
+            4,
+          );
         } else {
-          drawingContext.font = "900 italic 4vw Arial";
+          drawingContext.font = "900 italic 4vw Bangers";
           drawingContext.fillText("GAME", 0, -35);
           drawingContext.fillText("DESIGN", 0, 20);
 
           drawingContext.font = "800 italic 1.5vw Arial";
           drawingContext.fillStyle = "#ffeb3b";
-          drawingContext.fillText("- COMING SOON -", 0, 65);
+          drawTextWithWordSpacing(drawingContext, "- COMING SOON -", 0, 65, 4);
         }
         drawingContext.restore();
 
