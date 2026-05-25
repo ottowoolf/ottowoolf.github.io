@@ -115,14 +115,14 @@
             canvasEl.style.cursor = dataUrl;
           } else {
             // Keep pointer cursor to indicate interactivity on the product side
-            canvasEl.style.cursor = 'pointer';
+            canvasEl.style.cursor = "pointer";
           }
         }
       });
 
       // Reset cursor when leaving the canvas
-      canvasEl.addEventListener('mouseleave', () => {
-        canvasEl.style.cursor = 'default';
+      canvasEl.addEventListener("mouseleave", () => {
+        canvasEl.style.cursor = "default";
       });
 
       window.addEventListener("click", () => {
@@ -174,6 +174,7 @@
         ctx.clearRect(0, 0, width, height);
 
         const easedProgress = easeOutExpo(progress);
+        const isNarrow = width <= 600;
 
         // Base X coordinates and text positions
         let topX = width * 0.6;
@@ -242,22 +243,32 @@
           }
         }
 
-        // Text
+        // Text (desktop vs narrow/mobile)
         drawingContext.fillStyle = "white";
-        drawingContext.font = "900 italic 4vw Arial";
         drawingContext.textAlign = "center";
         drawingContext.textBaseline = "middle";
         drawingContext.save();
         drawingContext.translate(leftTextX, height * 0.5);
         drawingContext.rotate(-0.1);
-        drawingContext.fillText("GAME", 0, -35);
-        drawingContext.fillText("DESIGN", 0, 20);
+        if (isNarrow) {
+          const basePx = Math.floor(Math.min(width, height) * 0.11);
+          const mainPx = Math.max(12, Math.min(44, basePx - 12));
+          drawingContext.font = `900 italic ${mainPx}px Arial`;
+          const halfGap = 2; // total gap = 4px (2px above, 2px below)
+          drawingContext.fillText("GAME", 0, 0); // single-line title on narrow
 
-        // Coming Soon
-        drawingContext.font = "800 italic 1.5vw Arial";
-        drawingContext.fillStyle = "#ffeb3b";
-        drawingContext.fillText("- COMING SOON -", 0, 65);
+          drawingContext.font = `800 italic ${Math.max(12, Math.floor(mainPx * 0.35))}px Arial`;
+          drawingContext.fillStyle = "#ffeb3b";
+          drawingContext.fillText("- COMING SOON -", 0, Math.floor(mainPx / 2) + 28);
+        } else {
+          drawingContext.font = "900 italic 4vw Arial";
+          drawingContext.fillText("GAME", 0, -35);
+          drawingContext.fillText("DESIGN", 0, 20);
 
+          drawingContext.font = "800 italic 1.5vw Arial";
+          drawingContext.fillStyle = "#ffeb3b";
+          drawingContext.fillText("- COMING SOON -", 0, 65);
+        }
         drawingContext.restore();
 
         // Speed lines during intro
@@ -306,16 +317,22 @@
           }
         }
 
-        // Text
+        // Text (desktop vs narrow/mobile)
         drawingContext.fillStyle = "white";
-        drawingContext.font = "900 4vw Arial";
         drawingContext.textAlign = "center";
         drawingContext.textBaseline = "middle";
         drawingContext.save();
-
         drawingContext.translate(rightTextX, height * 0.5);
-        drawingContext.fillText("PRODUCT", 0, -30);
-        drawingContext.fillText("DESIGN", 0, 30);
+        if (isNarrow) {
+          const basePxR = Math.floor(Math.min(width, height) * 0.11);
+          const mainPxR = Math.max(12, Math.min(44, basePxR - 12));
+          drawingContext.font = `900 ${mainPxR}px Arial`;
+          drawingContext.fillText("PRODUCT", 0, 0);
+        } else {
+          drawingContext.font = "900 4vw Arial";
+          drawingContext.fillText("PRODUCT", 0, -30);
+          drawingContext.fillText("DESIGN", 0, 30);
+        }
         drawingContext.restore();
 
         // Speed lines during intro
