@@ -71,6 +71,7 @@
       let introDone = false;
       let hoverSide = null;
       let transitionTarget = "product";
+      let clickRipples = [];
 
       // Transition variables
       let transitionPhase = "none"; // 'none', 'delay', 'slide', 'fadeOut'
@@ -130,8 +131,15 @@
         canvasEl.style.cursor = "default";
       });
 
-      window.addEventListener("click", () => {
+      window.addEventListener("click", (event) => {
         if (introDone && hoverSide && transitionPhase === "none") {
+          clickRipples.push({
+            x: event.clientX,
+            y: event.clientY,
+            start: performance.now(),
+            side: hoverSide,
+          });
+
           if (hoverSide === "right") {
             // Start the product transition with a delay
             transitionTarget = "product";
@@ -211,6 +219,54 @@
           cursor += wordWidths[i] + spaceWidth + extraWordSpacing;
         }
         ctx.textAlign = prevAlign;
+      }
+
+      function drawClickRipples() {
+        const now = performance.now();
+        const rippleDuration = 900;
+        clickRipples = clickRipples.filter(
+          (ripple) => now - ripple.start < rippleDuration,
+        );
+
+        for (const ripple of clickRipples) {
+          const t = Math.min(1, (now - ripple.start) / rippleDuration);
+          const eased = easeOutExpo(t);
+          const radius = 8 + eased * 90;
+          const opacity = Math.pow(1 - t, 1.7) * 0.55;
+          const lineWidth = Math.max(1, 3 - t * 1.8);
+
+          drawingContext.save();
+          drawingContext.translate(ripple.x, ripple.y);
+          drawingContext.globalCompositeOperation = "screen";
+          drawingContext.strokeStyle =
+            ripple.side === "left"
+              ? `rgba(255, 235, 59, ${opacity})`
+              : `rgba(255, 255, 255, ${opacity})`;
+          drawingContext.lineWidth = Math.max(1, lineWidth);
+          drawingContext.shadowColor =
+            ripple.side === "left"
+              ? "rgba(255, 42, 95, 0.22)"
+              : "rgba(0, 119, 255, 0.22)";
+          drawingContext.shadowBlur = 5;
+          drawingContext.beginPath();
+          drawingContext.arc(0, 0, radius, 0, Math.PI * 2);
+          drawingContext.stroke();
+
+          drawingContext.strokeStyle =
+            ripple.side === "left"
+              ? `rgba(255, 235, 59, ${opacity * 0.2})`
+              : `rgba(255, 255, 255, ${opacity * 0.15})`;
+          drawingContext.lineWidth = Math.max(1, lineWidth * 0.45);
+          drawingContext.beginPath();
+          drawingContext.arc(0, 0, radius * 1.15, 0, Math.PI * 2);
+          drawingContext.stroke();
+
+          drawingContext.fillStyle = `rgba(255,255,255,${opacity * 0.12})`;
+          drawingContext.beginPath();
+          drawingContext.arc(0, 0, Math.max(1, 4 - t * 3), 0, Math.PI * 2);
+          drawingContext.fill();
+          drawingContext.restore();
+        }
       }
 
       // Deterministic pseudo-random based on position — keeps halftone static
@@ -468,6 +524,8 @@
           drawingContext.fillStyle = `rgba(255, 255, 255, ${transitionProgress})`;
           drawingContext.fillRect(0, 0, width, height);
         }
+
+        drawClickRipples();
 
         // Animation logic (time-based for consistent durations)
         const now = performance.now();
