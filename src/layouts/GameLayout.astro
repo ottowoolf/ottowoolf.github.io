@@ -1,0 +1,137 @@
+---
+import Layout from "./main.astro";
+
+const { title } = Astro.props;
+---
+
+<Layout title={title} menuType="game">
+  <div class="p5-container relative w-full overflow-hidden min-h-screen bg-black text-white selection:bg-[#e60012] selection:text-white">
+    <!-- Scrolling background pattern -->
+    <div class="p5-bg absolute inset-0 z-0"></div>
+    <div class="p5-halftone absolute inset-0 z-0"></div>
+
+    <div class="relative z-10 w-full">
+      <slot />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  /* Persona 5 Typography & Base */
+  .p5-title {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+  
+  /* Animated Red/Black/White Background */
+  .p5-bg {
+    background-color: #000;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #111 0px,
+      #111 20px,
+      #000 20px,
+      #000 40px
+    );
+    animation: slideBg 30s linear infinite;
+    pointer-events: none;
+  }
+
+  .p5-halftone {
+    background-image: radial-gradient(circle, #e60012 2.5px, transparent 2.5px);
+    background-size: 32px 32px;
+    opacity: 0.2;
+    mix-blend-mode: screen;
+    animation: pulseHalftone 4s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes slideBg {
+    0% { background-position: 0 0; }
+    100% { background-position: -100vw 100vw; }
+  }
+
+  @keyframes pulseHalftone {
+    0% { opacity: 0.1; transform: scale(1); }
+    100% { opacity: 0.25; transform: scale(1.05); }
+  }
+
+  /* Label clip-path */
+  .p5-label {
+    clip-path: polygon(0 0, 100% 6%, 97% 100%, 2% 94%);
+  }
+  
+  .p5-card-frame {
+    clip-path: polygon(2% 0, 100% 3%, 98% 100%, 0 97%);
+  }
+
+  /* Buttons */
+  .p5-btn {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+
+  .p5-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #e60012;
+    clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 0;
+  }
+
+  .p5-btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: -1;
+    transform: translate(-8px, 8px);
+  }
+
+  .p5-btn-primary:hover::before {
+    background-color: #fff;
+    transform: scale(1.05) rotate(-3deg);
+  }
+  .p5-btn-primary:hover::after {
+    transform: translate(-12px, 12px) scale(1.05) rotate(-3deg);
+    background-color: #e60012;
+  }
+
+  .p5-btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    clip-path: polygon(0 6%, 94% 0, 100% 94%, 6% 100%);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 0;
+  }
+
+  .p5-btn-secondary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #e60012;
+    clip-path: polygon(0 6%, 94% 0, 100% 94%, 6% 100%);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: -1;
+    transform: translate(-8px, 8px);
+  }
+
+  .p5-btn-secondary:hover::before {
+    background-color: #e60012;
+    transform: scale(1.05) rotate(3deg);
+  }
+  .p5-btn-secondary:hover::after {
+    transform: translate(-12px, 12px) scale(1.05) rotate(3deg);
+    background-color: #fff;
+  }
+
+  /* Play Button */
+  .p5-play-btn {
+    clip-path: polygon(15% 0, 100% 15%, 85% 100%, 0 85%);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+</style>

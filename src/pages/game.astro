@@ -1,17 +1,61 @@
 ---
-import Layout from "../layouts/main.astro";
+import GameLayout from "../layouts/GameLayout.astro";
 ---
 
-<Layout title="Game Design">
-  <section class="min-h-screen flex items-center justify-center px-6 py-24">
-    <div class="max-w-xl text-center">
-      <p class="text-sm uppercase tracking-[0.3em] text-slate-500">
-        Temporary placeholder
-      </p>
-      <h1 class="mt-4 text-4xl font-bold text-slate-900">Game Design</h1>
-      <p class="mt-4 text-lg text-slate-600">
-        This page is a work-in-progress placeholder for the game design section.
-      </p>
+<GameLayout title="Game UI/UX Designer">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 lg:pt-40 pb-24 min-h-screen flex flex-col justify-center">
+      
+      <!-- Showreel Hero Section -->
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-8 relative">
+        
+        <!-- Left Side: Title & Buttons -->
+        <div class="flex-1 w-full relative z-20">
+          <h1 class="p5-title text-7xl md:text-[8rem] lg:text-[10rem] font-black uppercase leading-[0.85] tracking-wider mix-blend-normal mb-12 text-white relative flex flex-col drop-shadow-2xl mt-4">
+            <span class="inline-block transform -rotate-3 hover:rotate-0 transition-transform origin-bottom-left" style="text-shadow: 6px 6px 0 #e60012;">Game</span>
+            <span class="inline-block transform -rotate-1 text-[#e60012] ml-4 md:ml-12 hover:scale-105 transition-transform origin-bottom-left" style="-webkit-text-stroke: 2px white; text-shadow: -4px 4px 0 #000;">UI/UX</span>
+            <span class="inline-block transform rotate-2 -mt-4 text-transparent" style="-webkit-text-stroke: 3px white; text-shadow: 6px 6px 0 #000;">Designer</span>
+          </h1>
+
+          <div class="flex flex-col sm:flex-row gap-8 lg:gap-10 mt-16 relative z-30">
+            <a href="/game-projects" class="p5-btn p5-btn-primary group inline-flex relative justify-center items-center px-10 py-5 font-black uppercase tracking-widest text-2xl transition-all w-max">
+              <span class="relative z-10 text-white group-hover:text-black">View Projects</span>
+            </a>
+            <a href="/game-sandbox" class="p5-btn p5-btn-secondary group inline-flex relative justify-center items-center px-10 py-5 font-black uppercase tracking-widest text-2xl transition-all w-max">
+              <span class="relative z-10 text-black group-hover:text-white">Sandbox</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Showreel Video -->
+        <div class="flex-1 w-full relative z-10 mt-20 lg:mt-0 max-w-3xl mx-auto">
+          <!-- Offset jagged shadow (Red) -->
+          <div class="absolute inset-[-12px] bg-[#e60012] transform translate-x-4 translate-y-6 lg:translate-x-8 lg:translate-y-10" style="clip-path: polygon(2% 0, 100% 3%, 98% 100%, 0 97%);"></div>
+          
+          <!-- Black frame -->
+          <div class="absolute inset-[-16px] bg-black z-0 transform rotate-1" style="clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%);"></div>
+          
+          <!-- White inner border frame -->
+          <div class="absolute inset-[-6px] bg-white z-0 transform -rotate-1" style="clip-path: polygon(1% 1%, 99% 0%, 98% 99%, 0% 100%);"></div>
+
+          <!-- Video container -->
+          <div class="p5-video-frame relative z-10 w-full aspect-video bg-neutral-900 flex items-center justify-center shadow-2xl transition-transform duration-500 ease-out cursor-pointer overflow-hidden group" style="clip-path: polygon(1% 1%, 99% 0%, 99% 99%, 0% 100%);">
+            <!-- Placeholder for actual video (using a free abstract background for demo) -->
+            <video class="w-full h-full object-cover opacity-70 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]" autoplay loop muted playsinline>
+               <source src="https://cdn.pixabay.com/video/2021/08/04/83866-584752530_tiny.mp4" type="video/mp4" />
+            </video>
+            
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+              <div class="p5-play-btn bg-[#e60012] text-white p-6 shadow-[-8px_8px_0_#000]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+
+            <!-- "SHOWREEL" tape label -->
+            <div class="absolute -top-1 -right-12 bg-white text-black font-black uppercase italic tracking-widest px-16 py-2 text-lg transform rotate-45 shadow-[0_4px_10px_rgba(0,0,0,0.5)] z-30 border-b-4 border-black border-dashed">
+              Showreel
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-</Layout>
+</GameLayout>

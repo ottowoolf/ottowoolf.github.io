@@ -155,7 +155,7 @@
             // Start the game transition with a mirrored delay
             transitionTarget = "game";
             transitionPhase = "delay";
-            msgEl.innerText = "Redirecting to Game Design...";
+            msgEl.innerText = "Redirecting to Game UI/UX...";
             msgEl.style.opacity = "1";
 
             setTimeout(() => {
@@ -400,7 +400,7 @@
           const mainPx = Math.max(12, Math.min(44, basePx - 12));
           drawingContext.font = `900 italic ${mainPx}px Bangers`;
           const halfGap = 2; // total gap = 4px (2px above, 2px below)
-          drawingContext.fillText("GAME", 0, 0); // single-line title on narrow
+          drawingContext.fillText("GAME UI/UX", 0, 0); // single-line title on narrow
 
           drawingContext.font = `800 italic ${Math.max(12, Math.floor(mainPx * 0.35))}px Bangers`;
           drawingContext.fillStyle = "#ffeb3b";
@@ -415,7 +415,7 @@
         } else {
           drawingContext.font = "900 italic 4vw Bangers";
           drawingContext.fillText("GAME", 0, -35);
-          drawingContext.fillText("DESIGN", 0, 20);
+          drawingContext.fillText("UI/UX", 0, 20);
 
           drawingContext.font = "800 italic 1.5vw Arial";
           drawingContext.fillStyle = "#ffeb3b";

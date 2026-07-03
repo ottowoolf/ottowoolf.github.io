@@ -1,6 +1,10 @@
 ---
 import menus from "../collections/menu.json";
+import gameMenus from "../collections/game-menu.json";
 import LogoLottie from "./LogoLottie.astro";
+
+const { menuType = 'product' } = Astro.props;
+const activeMenu = menuType === 'game' ? gameMenus : menus;
 ---
 
 <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
@@ -65,7 +69,7 @@ import LogoLottie from "./LogoLottie.astro";
           </div>
         </div>
         {
-          menus.map((menu) => {
+          activeMenu.map((menu) => {
             return (
               <a
                 href={menu.url}

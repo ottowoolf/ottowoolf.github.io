@@ -1,0 +1,62 @@
+---
+import GameLayout from "../layouts/GameLayout.astro";
+---
+
+<GameLayout title="Game Projects">
+  <section class="relative z-20 max-w-6xl mx-auto my-24 px-7 lg:px-0 mt-32">
+    
+    <div class="mb-16 relative inline-block">
+        <h1 class="p5-title text-5xl md:text-7xl font-black uppercase tracking-wider text-white relative z-10 drop-shadow-lg transform -rotate-2">
+            <span class="inline-block transform rotate-1 text-[#e60012]" style="-webkit-text-stroke: 2px white; text-shadow: -4px 4px 0 #000;">Game</span> 
+            <span style="text-shadow: 4px 4px 0 #e60012;">Projects</span>
+        </h1>
+        <div class="absolute -bottom-4 -right-4 bg-white text-black font-black uppercase italic tracking-widest px-4 py-1 text-sm transform rotate-3 shadow-[0_4px_10px_rgba(0,0,0,0.5)] z-20">
+            Select Mission
+        </div>
+    </div>
+
+    <div class="grid items-stretch w-full grid-cols-1 my-8 gap-12 md:gap-16 sm:grid-cols-2">
+      <!-- Project Card 1 -->
+      <a href="#" class="group relative block outline-none">
+        <!-- Offset Shadow -->
+        <div class="absolute inset-0 bg-[#e60012] transform translate-x-3 translate-y-4 p5-card-frame transition-transform group-hover:translate-x-5 group-hover:translate-y-6"></div>
+        <!-- Card Body -->
+        <div class="relative bg-black border-[6px] border-white p5-card-frame h-full flex flex-col overflow-hidden transform transition-transform group-hover:-translate-y-2 group-hover:-translate-x-1">
+            <!-- Image Area -->
+            <div class="aspect-video relative overflow-hidden bg-neutral-900 border-b-[4px] border-white" style="clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);">
+                <div class="absolute inset-0 bg-[#e60012] opacity-0 group-hover:opacity-40 mix-blend-color z-10 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center font-black text-4xl text-neutral-800 tracking-widest uppercase">
+                    Classified
+                </div>
+            </div>
+            <!-- Content Area -->
+            <div class="p-6 flex-grow flex flex-col relative z-20 bg-black">
+                <h3 class="p5-title text-3xl font-black text-white uppercase tracking-wide group-hover:text-[#e60012] transition-colors mt-2 mb-4">Sci-Fi FPS HUD</h3>
+                <p class="font-bold text-neutral-300 text-lg">A clean, high-contrast HUD designed for fast-paced shooters. Features ammo counters, health bars, and minimap concepts.</p>
+            </div>
+        </div>
+      </a>
+
+      <!-- Project Card 2 -->
+      <a href="#" class="group relative block outline-none">
+        <!-- Offset Shadow -->
+        <div class="absolute inset-0 bg-white transform translate-x-3 translate-y-4 p5-card-frame transition-transform group-hover:translate-x-5 group-hover:translate-y-6"></div>
+        <!-- Card Body -->
+        <div class="relative bg-black border-[6px] border-[#e60012] p5-card-frame h-full flex flex-col overflow-hidden transform transition-transform group-hover:-translate-y-2 group-hover:-translate-x-1">
+            <!-- Image Area -->
+            <div class="aspect-video relative overflow-hidden bg-neutral-900 border-b-[4px] border-[#e60012]" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);">
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 mix-blend-overlay z-10 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center font-black text-4xl text-neutral-800 tracking-widest uppercase">
+                    Locked
+                </div>
+            </div>
+            <!-- Content Area -->
+            <div class="p-6 flex-grow flex flex-col relative z-20 bg-black">
+                <h3 class="p5-title text-3xl font-black text-white uppercase tracking-wide group-hover:text-white transition-colors mt-2 mb-4">Fantasy RPG Menu</h3>
+                <p class="font-bold text-neutral-300 text-lg">Inventory and skill tree interfaces with thematic styling, utilizing heavy textures and parchment motifs.</p>
+            </div>
+        </div>
+      </a>
+    </div>
+  </section>
+</GameLayout>

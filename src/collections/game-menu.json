@@ -1,0 +1,18 @@
+[
+	{
+		"name": "Home",
+		"url": "/game"
+	},
+	{
+		"name": "Work",
+		"url": "/game-projects"
+	},
+	{
+		"name": "Sandbox",
+		"url": "/game-sandbox"
+	},
+	{
+		"name": "About",
+		"url": "/game-about"
+	}
+]

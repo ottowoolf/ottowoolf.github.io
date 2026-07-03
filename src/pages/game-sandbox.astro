@@ -1,0 +1,36 @@
+---
+import GameLayout from "../layouts/GameLayout.astro";
+---
+
+<GameLayout title="Game Sandbox">
+  <section class="relative z-20 max-w-4xl mx-auto my-24 px-7 lg:px-0 mt-32">
+    
+    <div class="mb-16 relative inline-block">
+        <div class="absolute -inset-4 bg-[#e60012] z-0 p5-label shadow-[4px_4px_0_#fff]"></div>
+        <h1 class="p5-title text-5xl md:text-7xl font-black uppercase tracking-wider text-white relative z-10 drop-shadow-lg transform rotate-1">
+            <span class="inline-block transform -rotate-1 text-[#e60012]" style="-webkit-text-stroke: 2px white; text-shadow: -4px 4px 0 #000;">Sandbox</span> 
+            <span style="text-shadow: 4px 4px 0 #e60012;">& Doodling</span>
+        </h1>
+        <div class="absolute -top-6 -right-6 bg-black text-white font-black uppercase italic tracking-widest px-4 py-1 text-xs transform -rotate-6 shadow-[0_4px_10px_rgba(0,0,0,0.5)] z-20 border border-white">
+            WIP
+        </div>
+    </div>
+
+    <div class="my-8 relative drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+        <!-- Offset Shadow -->
+        <div class="absolute inset-0 bg-white transform translate-x-3 translate-y-4 p5-card-frame"></div>
+        
+        <div class="relative bg-black border-[6px] border-[#e60012] p-12 p5-card-frame text-center">
+            <div class="text-8xl mb-8 transform -rotate-12">🎨</div>
+            <h3 class="p5-title text-4xl font-black text-white uppercase tracking-wide mb-6">Work in Progress</h3>
+            <p class="font-bold text-neutral-300 text-xl max-w-xl mx-auto">
+                This area will be a dump of all the fun, unpolished things I do. Explorations, UI animations, rough wireframes, and creative chaos.
+            </p>
+            
+            <div class="mt-12 text-[#e60012] font-black text-3xl uppercase tracking-widest animate-pulse">
+                Stay Tuned...
+            </div>
+        </div>
+    </div>
+  </section>
+</GameLayout>
