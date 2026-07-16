@@ -3,6 +3,7 @@ import experiences from "../collections/experiences.json";
 import AboutExperience from "../components/about-experience.astro";
 import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
+import Button from "../components/button.astro";
 ---
 
 <Layout title="About Me">
@@ -14,7 +15,7 @@ import Layout from "../layouts/main.astro";
       class="relative z-30 w-full my-10 rounded-xl"
     />
     <p
-      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+      class="text-sm leading-6 text-gray-600  sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
       I am a UX Designer bridging the technical gap between design and
       development. Currently at ASHM Health, I build accessible healthcare
@@ -22,7 +23,7 @@ import Layout from "../layouts/main.astro";
     </p>
     <br />
     <p
-      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+      class="text-sm leading-6 text-gray-600  sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
       My journey started in software development, building mobile apps and API
       integrations for companies like simPRO and Talcasoft. I leveraged that
@@ -32,16 +33,19 @@ import Layout from "../layouts/main.astro";
       to implement.
     </p>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
-    >
-      Experience
-    </h2>
+    <div class="flex items-center justify-between">
+      <h2
+        class="mt-5 mb-2 text-3xl font-bold lg:mt-10 sm:mt-6 "
+      >
+        Experience
+      </h2>
+      <Button text="Download CV" link="/assets/Otman_Ouali_CV.pdf" target="_blank" />
+    </div>
     <div class="px-5 py-10">
       {
         experiences.map((experience) => {
           return (
-            <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+            <div class="pb-10 border-l border-gray-200 last:border-l-0 ">
               <AboutExperience
                 dates={experience.dates}
                 role={experience.role}
@@ -56,12 +60,12 @@ import Layout from "../layouts/main.astro";
     </div>
 
     <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 "
     >
       Let's Connect
     </h2>
     <p
-      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+      class="text-sm leading-6 text-gray-600  sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
       If you want to stay up to date with my work be sure to <a
         href="https://www.linkedin.com/in/otman-ouali"

@@ -1,0 +1,16 @@
+---
+const { name, role, company, text } = Astro.props;
+---
+
+<div class="relative flex flex-col justify-between p-6 bg-white border border-neutral-200 rounded-2xl shadow-sm duration-300 ease-out hover:-translate-y-1 hover:shadow-md group">
+  <p class="text-sm leading-6 text-neutral-600 mb-6 font-light">"{text}"</p>
+  <div class="flex items-center mt-auto">
+    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 font-bold border border-neutral-200 group-hover:bg-neutral-900 group-hover:text-white duration-300">
+      {name.charAt(0)}
+    </div>
+    <div class="ml-4">
+      <h4 class="text-sm font-semibold text-neutral-900 leading-tight">{name}</h4>
+      <p class="text-xs text-neutral-500 font-medium">{role} @ <span class="text-neutral-700">{company}</span></p>
+    </div>
+  </div>
+</div>

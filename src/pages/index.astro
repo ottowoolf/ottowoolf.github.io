@@ -4,6 +4,8 @@ import Button from "../components/button.astro";
 import HeroLottie from "../components/HeroLottie.astro";
 import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
+import Testimonials from "../components/home/testimonials.astro";
+import BentoGrid from "../components/home/bento-grid.astro";
 import Layout from "../layouts/main.astro";
 ---
 
@@ -11,9 +13,13 @@ import Layout from "../layouts/main.astro";
   <HeroLottie />
   <Separator text="Selected Projects" />
   <Projects />
+
+  <Separator text="Earlier Projects" />
+  <BentoGrid />
+
+  <Separator text="What is it like working with me?" />
+  <Testimonials />
+
   <Separator id="intelligence" text="Portfolio AI Assistant" />
   <AiAssistant />
-
-  <!-- <Separator text="Some of my writing" /> -->
-  <!-- <Writings /> -->
 </Layout>

@@ -12,6 +12,18 @@
 		"url": "/beyond-the-c"
 	},
 	{
+		"name": "HIV Guidelines",
+		"description": "Consolidating 7 distinct HIV guidelines into a unified knowledge base.",
+		"image": "/assets/images/projects/hiv-guidelines-thumb.png",
+		"url": "/hiv-guidelines"
+	},
+	{
+		"name": "Zash",
+		"description": "An AI-powered sales engagement platform for automated outbound outreach.",
+		"image": "/assets/images/projects/zash-hero-card.jpg",
+		"url": "/zash"
+	},
+	{
 		"name": "Coming Soon...",
 		"description": "Work in progress",
 		"image": "/assets/images/projects/coming-soon.png",

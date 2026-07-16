@@ -14,5 +14,10 @@
 	{
 		"name": "About",
 		"url": "/about"
+	},
+	{
+		"name": "Download CV",
+		"url": "/assets/Otman_Ouali_CV.pdf",
+		"external": true
 	}
 ]

@@ -1,0 +1,200 @@
+---
+import Layout from "../layouts/main.astro";
+
+const heroImage = "/assets/images/projects/zash-hero-card.jpg"; 
+const miroImg = "/assets/images/projects/Zash--process board Miro.avif";
+const wireframeImg = "/assets/images/projects/Zash-Wireframes iteration.avif";
+const dashboardImg = "/assets/images/projects/Zash-Dashboard.avif";
+const leadImg = "/assets/images/projects/Zash-Lead management.avif";
+const campaignsImg = "/assets/images/projects/Zash-campaigns screen.avif";
+const creationImg = "/assets/images/projects/Zash-campaign creation 3.avif";
+const sequenceImg = "/assets/images/projects/Zash-campaign sequence.avif";
+const chatImg = "/assets/images/projects/Zash-Conversation and bot chat screen.avif";
+const responsiveImg = "/assets/images/projects/Zash-Responsive Screens.avif";
+---
+
+<Layout title="Zash">
+  <div class="w-full bg-white  transition-colors duration-300">
+    <header class="relative h-[85vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-slate-900">
+      <div class="absolute inset-0 bg-slate-900/50 z-10"></div>
+      <img
+        src={heroImage}
+        alt="Zash Hero"
+        class="absolute inset-0 w-full h-full object-cover object-top opacity-50 animate-slow-zoom"
+      />
+
+      <div class="relative z-20 text-center max-w-5xl px-6 mt-20">
+        <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
+          UI Design Case Study
+        </span>
+        <h6 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">
+          Zash
+        </h6>
+        <p class="text-1xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+          A sales engagement platform powered by AI, helping businesses streamline and automate outbound outreach efforts, from lead generation to conversion.
+        </p>
+      </div>
+    </header>
+
+    <div class="border-b border-gray-100  bg-white ">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xs font-bold text-gray-400  uppercase tracking-widest mb-2">Role</h3>
+            <p class="font-medium text-gray-900 ">UI Designer</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400  uppercase tracking-widest mb-2">Timeline</h3>
+            <p class="font-medium text-gray-900 ">2 weeks</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400  uppercase tracking-widest mb-2">Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-100  rounded text-xs font-medium text-gray-600 ">Figma</span>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button
+              disabled
+              class="inline-flex items-center justify-center w-full py-3 bg-gray-200  text-gray-500  rounded-xl font-bold cursor-not-allowed shadow-sm"
+            >
+              No Live Link
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 opacity-50"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 py-16 space-y-24">
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900  mb-8">
+          The Challenge
+        </h2>
+        <p class="text-l text-gray-600  leading-relaxed mb-4">
+          Many businesses, from SMEs to large enterprises, face the challenge of efficiently conducting outbound sales and business development. Building and executing high-converting sales campaigns is time-consuming and requires deep expertise. 
+        </p>
+        <p class="text-l text-gray-600  leading-relaxed mb-4">
+          Existing solutions often lack the ability to fully automate these processes and provide truly personalised messaging.
+        </p>
+        <p class="text-l text-gray-600  leading-relaxed mb-12">
+          As a Ground-Up MVP, my responsibility was to collaborate with a cross-functional team of PMs and Devs, alongside the founder, to create a storyboard outlining essential features, before building wireframes and iterating towards the final UI solution.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900  mb-8">
+          A First Look
+        </h2>
+        <div class="mb-16">
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            Before diving into the process, here is a sneak peek at the final responsive solution we arrived at to solve the complex challenges of automated outbound sales.
+          </p>
+          <img src={responsiveImg} alt="Responsive Solution Sneak Peek" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900  mb-8">
+          Discovery & Ideation
+        </h2>
+        <div class="mb-16">
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            Every successful product starts with a solid foundation. I collaborated with the founder and cross-functional teams in Miro to storyboard the core user journeys, map out the required AI integrations, and define the MVP feature set before pushing a single pixel.
+          </p>
+          <img src={miroImg} alt="Miro Process Board" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900  mb-8">
+          Iterative Wireframing
+        </h2>
+        <div class="mb-16">
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            Moving from abstract concepts to tangible layouts, I rapidly prototyped low-fidelity wireframes. This iterative process allowed the team to align on the core navigation and data hierarchy early on, ensuring the complex AI sales flows were logically structured. I always make sure my project files are organised so that collaboration is seamless, work is efficient, and user flows are easy to follow.
+          </p>
+          <img src={wireframeImg} alt="Wireframe Iterations" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+      </section>
+
+      <!-- The Solution -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900  mb-8">
+          The Solution & Features
+        </h2>
+
+        <!-- 1. Dashboard -->
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900  mb-4">
+            1. Comprehensive Dashboard
+          </h3>
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            A centralized, bird's-eye view where users can instantly monitor active campaigns, track lead conversion metrics, and evaluate overall performance.
+          </p>
+          <img src={dashboardImg} alt="Dashboard Design" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+
+        <!-- 2. Lead Management -->
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900  mb-4">
+            2. Lead Management
+          </h3>
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            A robust interface designed to handle bulk data. Users can effortlessly import, sort, and organize their leads, ensuring the right prospects are funneled into the right AI sequences.
+          </p>
+          <img src={leadImg} alt="Lead Management" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+
+        <!-- 3. AI Campaign Creation -->
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900  mb-4">
+            3. AI Campaign Creation & Sequencing
+          </h3>
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            The beating heart of Zash. I designed an intuitive flow that guides users through generating AI-powered, multi-channel outreach campaigns. The visual sequence builder allows users to map out complex email, SMS, and social media touchpoints with ease.
+          </p>
+          <div class="space-y-6">
+            <img src={campaignsImg} alt="Campaigns Screen" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+            <img src={creationImg} alt="Campaign Creation" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+            <img src={sequenceImg} alt="Campaign Sequence" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+          </div>
+        </div>
+
+        <!-- 4. Conversational AI -->
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900  mb-4">
+            4. Conversational AI
+          </h3>
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            To drive conversions autonomously, I designed a dedicated chat interface where the conversational AI can qualify leads and nurture prospects in real-time.
+          </p>
+          <img src={chatImg} alt="Conversational AI Chat" class="w-full max-h-[700px] object-cover object-top rounded-2xl border border-gray-200 " />
+        </div>
+
+        <!-- 5. Responsive Design -->
+        <div>
+          <h3 class="text-1xl font-bold text-gray-900  mb-4">
+            5. Responsive Design
+          </h3>
+          <p class="prose prose-l text-gray-600  mb-8 max-w-full">
+            While primarily a desktop-first enterprise tool, I ensured the layouts scaled elegantly to mobile devices, allowing sales teams to monitor campaigns on the go.
+          </p>
+          <img src={responsiveImg} alt="Responsive Screens" class="max-w-full h-auto object-contain rounded-2xl border border-gray-200 " />
+        </div>
+
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes slow-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s linear infinite alternate;
+    transform-origin: top center;
+  }
+</style>
