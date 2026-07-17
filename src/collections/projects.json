@@ -2,25 +2,25 @@
 	{
 		"name": "ASHM Health",
 		"description": "Leading organisation In the HIV sector in Australia.",
-		"image": "/assets/images/projects/ashm-hero.png",
+		"image": "/assets/images/projects/ashm-health-mockup.png",
 		"url": "/ashm"
 	},
 	{
 		"name": "Beyond The C",
 		"description": "A website dedicated to Hepatitis C education and awareness.",
-		"image": "/assets/images/projects/BTC-Home.png",
+		"image": "/assets/images/projects/beyond-the-c-mockup.png",
 		"url": "/beyond-the-c"
 	},
 	{
 		"name": "HIV Guidelines",
 		"description": "Consolidating 7 distinct HIV guidelines into a unified knowledge base.",
-		"image": "/assets/images/projects/hiv-guidelines-thumb.png",
+		"image": "/assets/images/projects/hiv-guidelines-mobile.png",
 		"url": "/hiv-guidelines"
 	},
 	{
 		"name": "Zash",
 		"description": "An AI-powered sales engagement platform for automated outbound outreach.",
-		"image": "/assets/images/projects/zash-hero-card.jpg",
+		"image": "/assets/images/projects/Zash-Responsive Screens.avif",
 		"url": "/zash"
 	},
 	{
