@@ -2,20 +2,8 @@
 	{
 		"name": "ASHM Health",
 		"description": "Leading organisation In the HIV sector in Australia.",
-		"image": "/assets/images/projects/ashm-health-mockup.png",
+		"image": "/assets/images/projects/ASHM HealthMockup.png",
 		"url": "/ashm"
-	},
-	{
-		"name": "Beyond The C",
-		"description": "A website dedicated to Hepatitis C education and awareness.",
-		"image": "/assets/images/projects/beyond-the-c-mockup.png",
-		"url": "/beyond-the-c"
-	},
-	{
-		"name": "HIV Guidelines",
-		"description": "Consolidating 7 distinct HIV guidelines into a unified knowledge base.",
-		"image": "/assets/images/projects/hiv-guidelines-mobile.png",
-		"url": "/hiv-guidelines"
 	},
 	{
 		"name": "Zash",
@@ -24,8 +12,26 @@
 		"url": "/zash"
 	},
 	{
-		"name": "Coming Soon...",
-		"description": "Work in progress",
+		"name": "ASHM Design System",
+		"description": "A token-driven design system bridging Figma and code for 25+ websites.",
+		"image": "/assets/images/projects/Design system Cover Image.png",
+		"url": "/ashm-design-system"
+	},
+	{
+		"name": "HIV Guidelines",
+		"description": "Consolidating 7 distinct HIV guidelines into a unified knowledge base.",
+		"image": "/assets/images/projects/hiv-guidelines-mobile.png",
+		"url": "/hiv-guidelines"
+	},
+	{
+		"name": "Beyond The C",
+		"description": "A website dedicated to Hepatitis C education and awareness.",
+		"image": "/assets/images/projects/beyond-the-c-mockup.png",
+		"url": "/beyond-the-c"
+	},
+	{
+		"name": "More projects coming soon",
+		"description": "I'm always working on something new. Check back later for more updates.",
 		"image": "/assets/images/projects/coming-soon.png",
 		"url": "#"
 	}

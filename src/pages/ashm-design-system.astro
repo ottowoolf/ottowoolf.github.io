@@ -1,0 +1,208 @@
+---
+import Layout from "../layouts/main.astro";
+
+const heroImage = "/assets/images/projects/Design system Cover Image.png"; 
+
+// Design System Assets
+const guidelinesImg = "/assets/images/projects/Guidelines and Purpose.png";
+const colourImg = "/assets/images/projects/Colour-palette.png";
+const typeImg = "/assets/images/projects/Type.png";
+const typeVariationImg = "/assets/images/projects/Type variation.png";
+const gridsImg = "/assets/images/projects/Grids.png";
+const elevationImg = "/assets/images/projects/elevation-new.png";
+const buttonsImg = "/assets/images/projects/Buttons.png";
+const fieldsImg = "/assets/images/projects/Fields.png";
+const cardsImg = "/assets/images/projects/Cards.png";
+const menuImg = "/assets/images/projects/Menu Sections.png";
+const tagsImg = "/assets/images/projects/Tags.png";
+const buttonSizesImg = "/assets/images/projects/Button sizes.png";
+const headerNavImg = "/assets/images/projects/Header Navigation.png";
+const headerNavMobileImg = "/assets/images/projects/Header Navigation mobile.png";
+const buildingBlocksImg = "/assets/images/projects/Building blocks for cards.png";
+
+// Implementation Assets
+const ashmHealthImg = "/assets/images/projects/ASHM HealthMockup.png";
+const hivGuidelinesImg = "/assets/images/projects/hiv-guidelines-mobile.png";
+const btcImg = "/assets/images/projects/beyond-the-c-mockup.png";
+---
+
+<Layout title="ASHM Design System">
+  <!-- Hero Section -->
+  <div class="w-full bg-white transition-colors duration-300">
+    <header class="relative h-[85vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-slate-900">
+      <div class="absolute inset-0 bg-slate-900/70 z-10"></div>
+      <img
+        src={heroImage}
+        alt="ASHM Design System Hero"
+        class="absolute inset-0 w-full h-full object-cover object-top opacity-50 animate-slow-zoom"
+      />
+
+      <div class="relative z-20 text-center max-w-5xl px-6 mt-20">
+        <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
+          Design system case study
+        </span>
+        <h6 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">
+          ASHM Design System
+        </h6>
+        <p class="text-1xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+          A modular, token-driven design system bridging the gap between Figma and code, powering over 25 uniquely branded websites.
+        </p>
+      </div>
+    </header>
+
+    <!-- Meta Info -->
+    <div class="border-b border-gray-100 bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-16">
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Role</h3>
+            <p class="font-medium text-gray-900">UX Engineer</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Scope</h3>
+            <p class="font-medium text-gray-900">25+ Websites</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-600">Figma</span>
+              <span class="px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-600">Token Studio</span>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button
+              disabled
+              class="inline-flex items-center justify-center w-full py-3 bg-gray-200 text-gray-500 rounded-xl font-bold cursor-not-allowed shadow-sm"
+            >
+              Internal System
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Implementation (Moved to top) -->
+    <section class="py-16 bg-slate-50 px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">The System in Action</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Before diving into the architecture, it is important to see where the journey leads. The ultimate test of any design system is how it scales in production. This foundation successfully powers the core ASHM Health platform, specialized tools like the HIV Guidelines, and independent initiatives like Beyond the C, all pulling from the same central truth.
+        </p>
+      </div>
+      
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+        <img src={ashmHealthImg} alt="ASHM Health Implementation" class="w-full" />
+        <img src={hivGuidelinesImg} alt="HIV Guidelines Implementation" class="w-full" />
+        <img src={btcImg} alt="Beyond The C Implementation" class="w-full" />
+      </div>
+    </section>
+
+    <!-- Section 1: Intro / Challenge (Light) -->
+    <section class="py-16 bg-white px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why I created the design system</h2>
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+          The core challenge was managing expectations across heavily fragmented brandings. Stakeholders from different departments and partner organizations pushed for their unique visual identities across 25 distinct websites.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          From day one, I knew this would be a permanent work in progress. I needed to find the right methodology to kick off the project, build solid foundations, and establish a direct pipeline between our Figma files and the development repository using Design Tokens.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <img src={guidelinesImg} alt="Guidelines and Purpose" class="w-full rounded-2xl shadow-xl border border-gray-100" />
+      </div>
+    </section>
+
+    <!-- Section 2: Colour (Dark) -->
+    <section class="py-16 bg-slate-50 px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">A unified yet flexible colour system</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Colour systems have a tendency to become overly complex. I designed this palette to be intuitive yet flexible enough to support the strict WCAG 2.1 level AA accessibility requirements needed for clinical and public health platforms. Early on, I focused my efforts by putting accessibility as a core pillar of the entire system.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <img src={colourImg} alt="Colour Palette" class="w-full rounded-2xl shadow-xl border border-slate-200" />
+      </div>
+    </section>
+
+    <!-- Section 3: Typography & Grids (Light) -->
+    <section class="py-16 bg-white px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Typography and Structure</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          The foundation of any good system is readability. The typography scale is mathematically derived to maintain hierarchy, while the responsive grid system ensures components scale elegantly from mobile devices to ultrawide clinical dashboards. Every decision here was made to save time and be more efficient as a UX Engineer while directly benefiting the developers.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto flex flex-col gap-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <img src={typeImg} alt="Typography" class="w-full rounded-2xl shadow-xl border border-gray-100" />
+          <img src={typeVariationImg} alt="Typography Variation" class="w-full rounded-2xl shadow-xl border border-gray-100" />
+        </div>
+        <img src={gridsImg} alt="Grids" class="w-full rounded-2xl shadow-xl border border-gray-100" />
+      </div>
+    </section>
+
+    <!-- Section 4: Elevation (Dark) -->
+    <section class="py-16 bg-slate-900 px-6 text-white my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Depth and Elevation</h2>
+        <p class="text-lg text-slate-300 leading-relaxed">
+          Elevation helps users parse complex interfaces by establishing a clear vertical axis. The shadow system is standardized into distinct tokens, ensuring popovers, modals, and dropdowns always feel spatially accurate. I put great effort into working hand in hand with the developers to ensure these spatial tokens translated perfectly into code.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <img src={elevationImg} alt="Elevation System" class="w-full rounded-2xl border border-slate-700 shadow-2xl" />
+      </div>
+    </section>
+
+    <!-- Section 5: Core Components (Light) -->
+    <section class="py-16 bg-white px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Intuitive Components</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Taking inspiration from the Atomic Design methodology, I organized the basic components by complexity so the team could find them quickly. Atoms like tags and buttons form the base of our system. These simple components include every possible scenario and state, acting as a living resource for developers to see exactly how they need to implement user interactions.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto flex flex-col gap-16">
+        <img src={buttonsImg} alt="Buttons" class="w-full rounded-2xl shadow-xl border border-gray-100 mb-16" />
+        <img src={buttonSizesImg} alt="Button Sizes" class="w-full rounded-2xl shadow-xl border border-gray-100 mb-16" />
+        <img src={tagsImg} alt="Tags" class="w-full rounded-2xl shadow-xl border border-gray-100 mb-16" />
+        <img src={fieldsImg} alt="Form Fields" class="w-full rounded-2xl shadow-xl border border-gray-100" />
+      </div>
+    </section>
+
+    <!-- Section 6: Complex Layouts (Soft) -->
+    <section class="py-16 bg-slate-50 px-6 my-8">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Complex Assemblies</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Organisms are the most complex components. They combine the smaller atoms and molecules to create robust blocks like content cards and navigation menus. These macro components act as the primary building blocks for all of our platforms, ensuring a cohesive user experience regardless of the specific brand styling.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto flex flex-col gap-16">
+        <img src={buildingBlocksImg} alt="Card Building Blocks" class="w-full rounded-2xl shadow-xl border border-slate-200 mb-16" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img src={cardsImg} alt="Cards Structure" class="w-full rounded-2xl shadow-xl border border-slate-200" />
+          <img src={menuImg} alt="Menu Sections" class="w-full rounded-2xl shadow-xl border border-slate-200" />
+          <img src={headerNavImg} alt="Header Navigation" class="w-full rounded-2xl shadow-xl border border-slate-200" />
+          <img src={headerNavMobileImg} alt="Header Navigation Mobile" class="w-full rounded-2xl shadow-xl border border-slate-200" />
+        </div>
+      </div>
+    </section>
+
+
+
+  </div>
+</Layout>
+
+<style>
+  @keyframes slow-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s linear infinite alternate;
+    transform-origin: top center;
+  }
+</style>
