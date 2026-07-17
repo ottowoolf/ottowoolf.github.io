@@ -7,12 +7,12 @@ import LogoLottie from "./LogoLottie.astro";
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
   <div
-    class="flex items-center justify-between h-full max-w-5xl pl-6 pr-4 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl"
+    class="flex items-center justify-between h-full max-w-5xl px-6 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl"
   >
     <LogoLottie
       href="/"
       src="/assets/Logo-Anim.json"
-      class="w-48 h-48"
+      class="w-72 h-72 sm:w-48 sm:h-48"
       loop={false}
     />
     <div
@@ -26,10 +26,10 @@ import LogoLottie from "./LogoLottie.astro";
     >
       <div
         id="openMenu"
-        class="flex flex-col items-end justify-center w-6 h-6 ml-4 cursor-pointer sm:hidden"
+        class="flex flex-col items-end justify-center w-12 h-12 ml-4 cursor-pointer sm:hidden"
       >
         <svg
-          class="w-8 h-8 "
+          class="w-12 h-12 "
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -40,10 +40,10 @@ import LogoLottie from "./LogoLottie.astro";
       </div>
       <div
         id="closeMenu"
-        class="flex flex-col items-end justify-center hidden w-6 h-6 ml-4 -translate-x-1 cursor-pointer sm:hidden"
+        class="flex flex-col items-end justify-center hidden w-12 h-12 ml-4 -translate-x-1 cursor-pointer sm:hidden"
       >
         <svg
-          class="w-6 h-6 text-neutral-600 "
+          class="w-12 h-12 text-neutral-600 "
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
