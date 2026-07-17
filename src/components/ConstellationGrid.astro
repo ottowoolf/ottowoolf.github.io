@@ -5,7 +5,7 @@
 <!-- Changed z-0 to -z-10 to push it behind all content -->
 <canvas
   id="magnify-canvas"
-  class="fixed inset-0 -z-10 pointer-events-none opacity-60"></canvas>
+  class="fixed inset-0 -z-10 pointer-events-none opacity-60 hidden lg:block"></canvas>
 
 <script>
   // Cast to HTMLCanvasElement for TypeScript
@@ -107,6 +107,13 @@
 
     function animate() {
       if (!ctx) return;
+      
+      // Skip drawing on mobile/tablet (matches lg breakpoint) to save performance
+      if (window.innerWidth < 1024) {
+        requestAnimationFrame(animate);
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
       for (let i = 0; i < particles.length; i++) {
