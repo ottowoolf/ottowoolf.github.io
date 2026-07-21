@@ -4,6 +4,13 @@
 
 /* Add Your Custom CSS Here */
 
+/* Custom View Transition Duration & Easing for a smoother, airier feel on back navigation */
+html[data-astro-transition="back"]::view-transition-old(*),
+html[data-astro-transition="back"]::view-transition-new(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .prose img {
   border-radius: 30px;
 }

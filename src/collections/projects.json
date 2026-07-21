@@ -34,11 +34,5 @@
 		"description": "A website dedicated to Hepatitis C education and awareness.",
 		"image": "/assets/images/projects/beyond-the-c-mockup.png",
 		"url": "/beyond-the-c"
-	},
-	{
-		"name": "More projects coming soon",
-		"description": "I'm always working on something new. Check back later for more updates.",
-		"image": "/assets/images/projects/coming-soon.png",
-		"url": "#"
 	}
 ]

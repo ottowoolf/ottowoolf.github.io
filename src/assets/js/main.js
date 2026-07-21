@@ -14,7 +14,7 @@ const stickyClassesContainer = [
 const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:page-load", () => {
 	headerElement = document.getElementById("header");
 
 	stickyHeaderFuncionality();
