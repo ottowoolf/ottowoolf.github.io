@@ -1,0 +1,232 @@
+---
+import Layout from "../layouts/main.astro";
+
+// Placeholder assets until final ones are provided
+const heroImage = "/assets/images/projects/STI Guidelines home.png"; 
+const usabilityTestingImg = "/assets/images/projects/Legacy Website.png";
+const researchImg = "/assets/images/projects/STI Guidelines Cover.png";
+const architectureImg = "/assets/images/projects/STI Guidelines video Presentation.gif";
+---
+
+<Layout title="STI Guidelines Redesign">
+  <div class="w-full bg-white transition-colors duration-300">
+    <header class="relative h-[85vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-slate-900">
+      <div class="absolute inset-0 bg-slate-900/50 z-10"></div>
+      <img
+        src={heroImage}
+        alt="STI Guidelines Hero"
+        class="absolute inset-0 w-full h-full object-cover opacity-50 animate-slow-zoom"
+      />
+
+      <div class="relative z-20 text-center max-w-5xl px-6 mt-20">
+        <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
+          UX Design Case Study
+        </span>
+        <h6 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">
+          Australian STI Management Guidelines
+        </h6>
+        <p class="text-1xl md:text-2xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+          Improving clinical access to public health protocols through structured Information Architecture.
+        </p>
+      </div>
+    </header>
+
+    <div class="border-b border-gray-100 bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Role</h3>
+            <p class="font-medium text-gray-900">UX Designer</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Scope</h3>
+            <p class="font-medium text-gray-900">End-to-End Redesign</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-600">Figma</span>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <a
+              href="https://sti.guidelines.org.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center w-full py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-black transition-all text-sm group shadow-lg"
+            >
+              Visit Live Site
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 py-16 space-y-24">
+      
+      <!-- Stats Section -->
+      <section class="bg-blue-50 rounded-2xl p-10 border border-blue-50 relative overflow-hidden">
+        <h4 class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+          Project Impact & Scope
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 relative z-10">
+          <div>
+            <span class="block text-4xl font-bold text-blue-600 mb-2 tracking-tighter">15</span>
+            <span class="text-sm text-blue-900/100 font-medium leading-tight block">In-depth Interviews</span>
+          </div>
+          <div>
+            <span class="block text-4xl font-bold text-blue-600 mb-2 tracking-tighter">90+</span>
+            <span class="text-sm text-blue-900/100 font-medium leading-tight block">Survey Responses</span>
+          </div>
+          <div>
+            <span class="block text-4xl font-bold text-blue-600 mb-2 tracking-tighter">+14%</span>
+            <span class="text-sm text-blue-900/100 font-medium leading-tight block">Increase in User Visits</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 1: The Challenge & Usability Testing -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+          The Discovery Phase
+        </h2>
+        <p class="text-l text-gray-600 leading-relaxed mb-4">
+          The Australian STI Management Guidelines is a critical resource used by primary care health professionals across the country. However, before writing a single line of code or drawing a wireframe, I conducted thorough usability testing on the existing legacy website to understand the reality of how doctors and nurses were interacting with the platform.
+        </p>
+        <p class="text-l text-gray-600 leading-relaxed mb-12">
+          The testing revealed significant pain points: healthcare workers were getting lost in fragmented navigation, taking far too long to find time-sensitive treatment protocols while a patient was sitting directly in front of them.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Bubble Map Quotes -->
+          <div class="p-5 bg-slate-50 rounded-2xl border border-gray-200 shadow-inner flex flex-col justify-center relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
+
+            <div class="flex flex-col gap-3 relative z-10">
+              <!-- Bubble 1 -->
+              <div class="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm border border-gray-100 w-[85%] self-start transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                <p class="text-xs font-medium text-slate-800 leading-relaxed">"I just can't find the correct dosage fast enough while they are in the room."</p>
+                <p class="text-[10px] text-slate-400 mt-1 font-medium uppercase tracking-wider">— GP, Regional Clinic</p>
+              </div>
+
+              <!-- Bubble 2 (Hero Quote) -->
+              <div class="bg-slate-900 p-4 rounded-2xl rounded-tr-sm shadow-lg w-[90%] self-end transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <p class="text-sm font-bold text-white leading-snug">"Time is absolutely critical when the patient is sitting right in front of me."</p>
+              </div>
+
+              <!-- Bubble 3 -->
+              <div class="bg-white p-3 rounded-2xl rounded-bl-sm shadow-sm border border-gray-100 w-[80%] mx-auto transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                <p class="text-xs font-medium text-slate-800 leading-relaxed">"The navigation is so deep I keep getting lost."</p>
+                <p class="text-[10px] text-slate-400 mt-1 font-medium uppercase tracking-wider">— Sexual Health Nurse</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-200">
+            <img src={usabilityTestingImg} alt="Legacy Website Screenshot" class="w-full h-full object-cover object-top" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Research & Co-Design -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+          Research, Alignment & Co-Design
+        </h2>
+        
+        <p class="prose prose-l text-gray-600 mb-8 max-w-full">
+          This was an end-to-end project. I facilitated stakeholder meetings for feedback and collaboration, deployed a survey, and conducted in-depth user interviews to synthesize both qualitative and quantitative data. By co-designing the new redesign prototypes with the second half of the interview participants, we ensured that the new architecture matched the mental model of medical professionals perfectly.
+        </p>
+        
+        <div class="p-8 bg-slate-50 rounded-2xl border border-gray-200 mb-12">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-widest mb-6">The Methodology</h4>
+            <ul class="space-y-4">
+                <li class="flex items-start">
+                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold mr-4 shrink-0">1</span>
+                    <p class="text-gray-600 text-sm"><strong>Stakeholder Meetings:</strong> Presenting findings and collaborating on business and public health requirements.</p>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold mr-4 shrink-0">2</span>
+                    <p class="text-gray-600 text-sm"><strong>Survey & Interviews:</strong> Gathering a quantitative baseline from a targeted survey, alongside qualitative pain points from interviews with active healthcare workers.</p>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-900 text-white text-xs font-bold mr-4 shrink-0">3</span>
+                    <p class="text-gray-600 text-sm"><strong>Co-Design Sessions:</strong> Validating the new information hierarchy by prototyping directly with the second half of our interview participants.</p>
+                </li>
+            </ul>
+        </div>
+        
+        <img src={researchImg} alt="Research Phase Placeholder" class="w-full rounded-2xl border border-gray-100 shadow-md" />
+      </section>
+
+      <!-- Section: Mobile Navigation -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+          Streamlining Mobile Navigation
+        </h2>
+        
+        <p class="prose prose-l text-gray-600 mb-12 max-w-full">
+          One of the loudest complaints from our interviews was that mobile navigation on the legacy site was not a pleasant experience. Clinicians accessing the guidelines via phones or tablets during rapid consultations found the old menus cramped, unresponsive, and overwhelming. These screens showcase the new mobile-first approach—a streamlined, accessible, and touch-friendly redesign that ensures critical clinical pathways are always within a thumb's reach.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img src="/assets/images/projects/STI Guidelines Mobile 1.jpg" alt="STI Guidelines Mobile Redesign 1" class="w-full h-auto rounded-2xl shadow-md border border-gray-100" />
+          <img src="/assets/images/projects/STI Guidelines Mobile 2.jpg" alt="STI Guidelines Mobile Redesign 2" class="w-full h-auto rounded-2xl shadow-md border border-gray-100" />
+        </div>
+      </section>
+
+      <!-- Section 3: The Solution -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+          The Solution
+        </h2>
+
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900 mb-4">
+            Restructuring the Information Architecture
+          </h3>
+          <p class="prose prose-l text-gray-600 mb-8 max-w-full">
+            The core solution involved fundamentally restructuring the site's Information Architecture. We implemented a Mega Menu to categorize the extensive clinical data into a more predictable structure. We also introduced a significantly more robust, predictive search experience, drastically reducing the time it takes for healthcare professionals to find necessary protocols in high-pressure environments.
+          </p>
+          <img src={architectureImg} alt="Mega Menu Placeholder" class="max-w-full rounded-2xl border border-gray-100 shadow-md" />
+        </div>
+
+        <div class="mb-16">
+          <h3 class="text-1xl font-bold text-gray-900 mb-4">
+            Accessibility & Usability Focus
+          </h3>
+          <p class="prose prose-l text-gray-600 mb-8 max-w-full">
+            When designing the final prototypes, vastly improving accessibility standards across the board was a primary focus. The design system was overhauled to meet strict WCAG guidelines, ensuring high contrast, legible typography, and touch-friendly targets. We also introduced clear, dynamic public health alerts to surface critical information without overwhelming the user on mobile clinic devices.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: Impact & Takeaways -->
+      <section>
+        <div class="p-10 bg-slate-900 rounded-3xl text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">
+            Impact & Takeaways
+          </h2>
+          <p class="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            By anchoring the redesign in rigorous user testing and continuous co-design, the final prototypes successfully untangled a massive web of clinical data. The resulting design provided a much more predictable, calm, and accessible experience for healthcare workers who rely on these guidelines in critical moments.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes slow-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s linear infinite alternate;
+  }
+</style>

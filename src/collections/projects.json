@@ -24,6 +24,12 @@
 		"url": "/hiv-guidelines"
 	},
 	{
+		"name": "STI Guidelines",
+		"description": "Modernizing clinical access to complex public health protocols.",
+		"image": "/assets/images/projects/STI Guidelines Cover.png",
+		"url": "/sti-guidelines"
+	},
+	{
 		"name": "Beyond The C",
 		"description": "A website dedicated to Hepatitis C education and awareness.",
 		"image": "/assets/images/projects/beyond-the-c-mockup.png",
