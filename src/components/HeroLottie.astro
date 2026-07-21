@@ -8,15 +8,18 @@
   // OR simpler: pass the path. For now, let's use the import method which usually works with Vite.
   import animationData from "../assets/Hero-Section-Anim.json";
 
-  const container = document.getElementById("hero-lottie");
-
-  if (container) {
-    lottie.loadAnimation({
-      container: container,
-      renderer: "svg",
-      loop: false, // Set to true if you want looping
-      autoplay: true,
-      animationData: animationData,
-    });
-  }
+  document.addEventListener("astro:page-load", () => {
+    const container = document.getElementById("hero-lottie");
+    
+    if (container) {
+      container.innerHTML = ""; // Clear existing animation to prevent duplicates
+      lottie.loadAnimation({
+        container: container,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        animationData: JSON.parse(JSON.stringify(animationData)),
+      });
+    }
+  });
 </script>

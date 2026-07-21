@@ -21,7 +21,39 @@ document.addEventListener("astro:page-load", () => {
 	applyMenuItemClasses();
 	evaluateHeaderPosition();
 	mobileMenuFunctionality();
+	initScrollReveals();
 });
+
+window.initScrollReveals = () => {
+	const revealElements = document.querySelectorAll(".reveal-target");
+	
+	const revealOptions = {
+		threshold: 0,
+		rootMargin: "0px 0px -50px 0px"
+	};
+
+	const revealObserver = new IntersectionObserver((entries, observer) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				// Remove Tailwind hidden state classes
+				entry.target.classList.remove("opacity-0", "translate-y-10", "scale-95");
+				
+				// Add Tailwind visible state classes
+				entry.target.classList.add("opacity-100", "translate-y-0", "scale-100");
+				
+				// Keep custom classes just in case, but rely on Tailwind
+				entry.target.classList.remove("reveal-hidden");
+				entry.target.classList.add("reveal-visible");
+				
+				observer.unobserve(entry.target);
+			}
+		});
+	}, revealOptions);
+
+	revealElements.forEach(el => {
+		revealObserver.observe(el);
+	});
+};
 
 window.stickyHeaderFuncionality = () => {
 	window.addEventListener("scroll", () => {

@@ -11,6 +11,20 @@ html[data-astro-transition="back"]::view-transition-new(*) {
   animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Scroll Reveal Utilities */
+.reveal-target {
+  transition: opacity 1000ms cubic-bezier(0.25, 1, 0.5, 1), transform 1000ms cubic-bezier(0.25, 1, 0.5, 1) !important;
+  will-change: opacity, transform;
+}
+.reveal-hidden {
+  opacity: 0 !important;
+  transform: translateY(40px) !important;
+}
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 .prose img {
   border-radius: 30px;
 }
