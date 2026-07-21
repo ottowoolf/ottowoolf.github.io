@@ -5,7 +5,7 @@ const { link, text, target } = Astro.props;
 <a
   href={link}
   target={target || "_self"}
-  class="inline-flex w-auto px-4 py-2 mt-5 text-xs font-semibold duration-300 ease-out border rounded-full bg-neutral-900   text-neutral-100 hover:border-neutral-700 border-neutral-900  hover:bg-white   hover:text-neutral-900"
+  class="magnetic-button relative inline-flex w-auto px-8 py-3.5 mt-5 text-sm font-semibold duration-300 ease-out border rounded-full bg-neutral-900 text-neutral-100 hover:border-neutral-700 border-neutral-900 hover:bg-white hover:text-neutral-900"
 >
-  {text}
+  <span class="magnetic-content pointer-events-none duration-300 ease-out">{text}</span>
 </a>

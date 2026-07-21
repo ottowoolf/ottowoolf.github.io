@@ -22,7 +22,70 @@ document.addEventListener("astro:page-load", () => {
 	evaluateHeaderPosition();
 	mobileMenuFunctionality();
 	initScrollReveals();
+	initProjectCursor();
+	initMagneticButtons();
 });
+
+window.initMagneticButtons = () => {
+	if (window.innerWidth < 768) return;
+
+	const magnets = document.querySelectorAll('.magnetic-button');
+	
+	magnets.forEach((btn) => {
+		const content = btn.querySelector('.magnetic-content');
+		
+		btn.addEventListener('mousemove', (e) => {
+			const rect = btn.getBoundingClientRect();
+			const h = rect.width / 2;
+			const v = rect.height / 2;
+			
+			// Calculate distance from center of button
+			const x = e.clientX - rect.left - h;
+			const y = e.clientY - rect.top - v;
+			
+			// Move the button slightly towards cursor (30% pull)
+			btn.style.transform = `translate3d(${x * 0.3}px, ${y * 0.3}px, 0)`;
+			
+			// Move text slightly more for parallax depth
+			if (content) {
+				content.style.transform = `translate3d(${x * 0.15}px, ${y * 0.15}px, 0)`;
+			}
+		});
+		
+		btn.addEventListener('mouseleave', () => {
+			btn.style.transform = `translate3d(0px, 0px, 0px)`;
+			if (content) {
+				content.style.transform = `translate3d(0px, 0px, 0px)`;
+			}
+		});
+	});
+};
+
+window.initProjectCursor = () => {
+	const cursorPill = document.getElementById("project-cursor-pill");
+	if (!cursorPill) return;
+
+	// Do not bind cursor logic on mobile devices
+	if (window.innerWidth < 768) return;
+
+	const hoverElements = document.querySelectorAll(".project-card-hover");
+
+	hoverElements.forEach((el) => {
+		el.addEventListener("mouseenter", () => {
+			cursorPill.classList.remove("opacity-0");
+			cursorPill.classList.add("opacity-100");
+		});
+
+		el.addEventListener("mousemove", (e) => {
+			cursorPill.style.transform = `translate3d(${e.clientX - cursorPill.offsetWidth / 2}px, ${e.clientY - cursorPill.offsetHeight / 2}px, 0)`;
+		});
+
+		el.addEventListener("mouseleave", () => {
+			cursorPill.classList.remove("opacity-100");
+			cursorPill.classList.add("opacity-0");
+		});
+	});
+};
 
 window.initScrollReveals = () => {
 	const revealElements = document.querySelectorAll(".reveal-target");
