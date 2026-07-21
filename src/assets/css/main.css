@@ -29,6 +29,18 @@ html[data-astro-transition="back"]::view-transition-new(*) {
   border-radius: 30px;
 }
 
+/* Marquee Carousel Utilities */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 #sun {
   transform: translate3d(0, 0px, 0);
 }

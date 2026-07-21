@@ -1,4 +1,5 @@
 ---
+import ProjectCarousel from "../components/ProjectCarousel.astro";
 import Layout from "../layouts/main.astro";
 
 const heroImage = "/assets/images/projects/hiv-guidelines-hero.png"; 
@@ -140,6 +141,7 @@ const mobileImg = "/assets/images/projects/hiv-guidelines-mobile.png";
       </section>
     </div>
   </div>
+  <ProjectCarousel currentProjectUrl="/hiv-guidelines" />
 </Layout>
 
 <style>

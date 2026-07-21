@@ -1,0 +1,64 @@
+---
+import projects from "../collections/projects.json";
+
+const { currentProjectUrl } = Astro.props;
+const otherProjects = projects.filter(p => p.url !== currentProjectUrl);
+---
+
+<div class="w-full relative pt-12 pb-24 mt-20 overflow-hidden">
+  <p class="text-sm font-bold text-slate-900 mb-10 uppercase tracking-widest text-center">Continue Exploring</p>
+  
+  <!-- Full width Glass container -->
+  <div class="relative w-full bg-white/60 backdrop-blur-2xl py-10 pause-on-hover group">
+    
+    <!-- Gradient Masks -->
+    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Marquee Track Wrapper -->
+    <div class="flex w-full overflow-hidden">
+      <!-- First Set -->
+      <div class="flex shrink-0 animate-marquee items-center gap-16 px-8">
+        {otherProjects.map((project) => (
+          <a 
+            href={project.url}
+            class="flex items-center gap-6 shrink-0 group/item transition-transform duration-300 ease-out hover:-translate-y-2"
+          >
+            <img src={project.image} alt={project.name} class={`w-56 h-40 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity duration-300 ${project.url === '/ashm-design-system' ? 'scale-90' : ''}`} />
+            <span class="text-2xl md:text-3xl font-black tracking-tighter text-neutral-400 transition-colors duration-300 group-hover/item:text-slate-900 cursor-pointer">
+              {project.name}
+            </span>
+          </a>
+        ))}
+      </div>
+      <!-- Second Set (Duplicate for seamless loop) -->
+      <div class="flex shrink-0 animate-marquee items-center gap-16 px-8">
+        {otherProjects.map((project) => (
+          <a 
+            href={project.url}
+            class="flex items-center gap-6 shrink-0 group/item transition-transform duration-300 ease-out hover:-translate-y-2"
+          >
+            <img src={project.image} alt={project.name} class={`w-56 h-40 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity duration-300 ${project.url === '/ashm-design-system' ? 'scale-90' : ''}`} />
+            <span class="text-2xl md:text-3xl font-black tracking-tighter text-neutral-400 transition-colors duration-300 group-hover/item:text-slate-900 cursor-pointer">
+              {project.name}
+            </span>
+          </a>
+        ))}
+      </div>
+      <!-- Third Set (Safety for ultrawide screens) -->
+      <div class="flex shrink-0 animate-marquee items-center gap-16 px-8">
+        {otherProjects.map((project) => (
+          <a 
+            href={project.url}
+            class="flex items-center gap-6 shrink-0 group/item transition-transform duration-300 ease-out hover:-translate-y-2"
+          >
+            <img src={project.image} alt={project.name} class={`w-56 h-40 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity duration-300 ${project.url === '/ashm-design-system' ? 'scale-90' : ''}`} />
+            <span class="text-2xl md:text-3xl font-black tracking-tighter text-neutral-400 transition-colors duration-300 group-hover/item:text-slate-900 cursor-pointer">
+              {project.name}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

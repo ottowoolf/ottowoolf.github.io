@@ -1,6 +1,7 @@
 ---
 import LottiePlayer from "../components/LottiePlayer.astro";
 import Layout from "../layouts/main.astro";
+import ProjectCarousel from "../components/ProjectCarousel.astro";
 
 const heroImage = "../assets/images/projects/ashm-hero.png"; // Dark placeholder
 const screenSlider = "/assets/ashm-animated-screens.json";
@@ -368,6 +369,7 @@ const myashm = "/assets/images/myashm.png";
       </section>
     </div>
   </div>
+  <ProjectCarousel currentProjectUrl="/ashm" />
 </Layout>
 
 <style>
