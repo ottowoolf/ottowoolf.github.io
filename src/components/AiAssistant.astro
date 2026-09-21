@@ -111,14 +111,20 @@
         },
       );
       const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error?.message || "API returned an error");
+      }
+      
       const reply = data.candidates[0].content.parts[0].text;
 
       // 4. Remove Loader & Add Bot Message
       document.getElementById(loadingId)?.remove();
       addMessage(marked.parse(reply), "bot");
-    } catch (e) {
+    } catch (e: any) {
+      console.error("Chatbot API Error:", e);
       document.getElementById(loadingId)?.remove();
-      addMessage("Error connecting to AI.", "bot");
+      addMessage(`Error connecting to AI: ${e.message}`, "bot");
     }
   }
 
