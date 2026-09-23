@@ -27,6 +27,9 @@ import LogoLottie from "./LogoLottie.astro";
       <div
         id="openMenu"
         class="flex flex-col items-end justify-center w-12 h-12 ml-4 cursor-pointer sm:hidden"
+        role="button"
+        aria-label="Open mobile menu"
+        tabindex="0"
       >
         <svg
           class="w-12 h-12 "
@@ -41,6 +44,9 @@ import LogoLottie from "./LogoLottie.astro";
       <div
         id="closeMenu"
         class="flex flex-col items-end justify-center hidden w-12 h-12 ml-4 -translate-x-1 cursor-pointer sm:hidden"
+        role="button"
+        aria-label="Close mobile menu"
+        tabindex="0"
       >
         <svg
           class="w-12 h-12 text-neutral-600 "
