@@ -6,7 +6,9 @@ import ConstellationGrid from "../components/ConstellationGrid.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
 import { ViewTransitions } from 'astro:transitions';
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const defaultDescription = "A curated showcase of my work turning complex problems into intuitive, highly tactile digital experiences. From end-to-end product experiences to complex clinical guidelines and scalable design systems.";
+const siteTitle = title === "Otto" ? "Otman Ouali | Product & Interaction Designer" : `${title} | Otman Ouali`;
 ---
 
 <!doctype html>
@@ -29,7 +31,22 @@ const { title } = Astro.props;
 
       gtag("config", "G-KV7TSF07H6"); // Replace with your ID
     </script>
-    <title>{title}</title>
+    <title>{siteTitle}</title>
+    <meta name="description" content={description || defaultDescription} />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description || defaultDescription} />
+    <meta property="og:image" content={new URL("/assets/images/designsystem.png", Astro.url)} />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description || defaultDescription} />
+    <meta name="twitter:image" content={new URL("/assets/images/designsystem.png", Astro.url)} />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
