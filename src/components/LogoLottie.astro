@@ -18,7 +18,7 @@ const {
 
 <!-- Conditional Rendering: If 'href' exists, render link wrapper -->{
   href ? (
-    <a href={href} class:list={["block", className]}>
+    <a href={href} class:list={["block", className]} aria-label="Home">
       <div
         class="lottie-player w-full h-full"
         data-src={src}
