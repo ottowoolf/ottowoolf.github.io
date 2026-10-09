@@ -1,5 +1,5 @@
 ---
-const { name, description, url, image } = Astro.props;
+const { name, description, url, image, isLcp = false } = Astro.props;
 ---
 
 <a
@@ -21,6 +21,8 @@ const { name, description, url, image } = Astro.props;
         alt={`${name} Project Thumbnail`}
         width="800"
         height="450"
+        fetchpriority={isLcp ? "high" : "auto"}
+        loading={isLcp ? "eager" : "lazy"}
         class="w-full aspect-[16/9] object-contain rounded-lg transition-transform duration-500 ease-out group-hover:-translate-y-1"
         transition:name={"project-image-" + url}
       />
